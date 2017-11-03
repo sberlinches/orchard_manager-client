@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders } from './app.routing';
 
-import { DashboardModule } from '../dashboard/dashboard.module';
-import { SettingsModule } from '../settings/settings.module'
+import { DashboardModule } from './dashboard/dashboard.module';
+import { SettingsModule } from './settings/settings.module'
 
 @NgModule({
     // The view classes that belong to this module.
