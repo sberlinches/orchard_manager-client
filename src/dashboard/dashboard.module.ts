@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { dashboardRouting } from './dashboard.routing';
 
 import { DashboardComponent } from './components/dashboard.component';
+import { SensorAddComponent } from '../sensor/components/sensor-add.component';
 
 @NgModule({
     imports: [
@@ -11,7 +12,11 @@ import { DashboardComponent } from './components/dashboard.component';
         dashboardRouting
     ],
     declarations: [
-        DashboardComponent
+        DashboardComponent,
+        SensorAddComponent
+    ],
+    entryComponents: [
+        SensorAddComponent
     ]
 })
 
