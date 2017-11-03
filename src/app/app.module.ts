@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { routing, appRoutingProviders } from './app.routing';
 
 import { DashboardModule } from './dashboard/dashboard.module';
-import { SettingsModule } from './settings/settings.module'
+import { SettingsModule } from './settings/settings.module';
+import { UserModule } from './user/user.module'
 
 @NgModule({
     // The view classes that belong to this module.
@@ -20,7 +21,8 @@ import { SettingsModule } from './settings/settings.module'
         BrowserModule,
         routing,
         DashboardModule,
-        SettingsModule
+        SettingsModule,
+        UserModule
     ],
     // Creators of services that this module contributes to the global collection of services;
     // they become accessible in all parts of the app.
