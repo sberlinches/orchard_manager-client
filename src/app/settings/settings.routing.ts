@@ -2,9 +2,9 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SettingsComponent } from './components/settings.component';
-import { SettingsPasswordComponent } from './components/settings-password.component';
-import { SettingsProfileComponent } from './components/settings-profile.component';
-import { SettingsSensorsComponent } from './components/settings-sensors.component';
+import { UserEditComponent } from '../user/components/user-edit.component';
+import { UserEditPasswordComponent } from '../user/components/user-edit-password.component';
+import { SensorListComponent } from '../sensor/components/sensor-list.component';
 
 const settingsRoutes: Routes = [
     {
@@ -18,15 +18,15 @@ const settingsRoutes: Routes = [
             },
             {
                 path: 'password',
-                component: SettingsPasswordComponent,
+                component: UserEditPasswordComponent,
             },
             {
                 path: 'profile',
-                component: SettingsProfileComponent
+                component: UserEditComponent
             },
             {
                 path: 'sensors',
-                component: SettingsSensorsComponent
+                component: SensorListComponent
             }
         ]
     }

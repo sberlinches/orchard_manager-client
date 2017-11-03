@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { settingsRouting } from './settings.routing';
 
 import { SettingsComponent } from './components/settings.component';
-import { SettingsPasswordComponent } from './components/settings-password.component';
-import { SettingsProfileComponent } from './components/settings-profile.component';
-import { SettingsSensorsComponent } from './components/settings-sensors.component';
+import { UserEditComponent } from '../user/components/user-edit.component';
+import { UserEditPasswordComponent } from '../user/components/user-edit-password.component';
+import { SensorListComponent } from '../sensor/components/sensor-list.component';
 
 @NgModule({
     imports: [
@@ -15,9 +15,9 @@ import { SettingsSensorsComponent } from './components/settings-sensors.componen
     ],
     declarations: [
         SettingsComponent,
-        SettingsPasswordComponent,
-        SettingsProfileComponent,
-        SettingsSensorsComponent
+        UserEditComponent,
+        UserEditPasswordComponent,
+        SensorListComponent
     ]
 })
 
