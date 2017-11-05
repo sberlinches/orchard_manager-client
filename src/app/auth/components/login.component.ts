@@ -51,7 +51,7 @@ export class LoginComponent {
             .subscribe(
                 user => {
                     this.webStorageService.setItem('user', user, isPersistent); // TODO: literals
-                    this.router.navigate(['/dashboard']); // TODO: literals
+                    this.router.navigate([this.authService.getRedirectUrl()]);
                 },
                 error => {
                     this.errorMessage = <string>error.error;

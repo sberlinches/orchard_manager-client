@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { authRouting } from './auth.routing';
-// declarations
+// Declarations
 import { LoginComponent } from './components/login.component';
 import { LogoutComponent } from './components/logout.component';
-// providers
+// Providers
 import { AuthService } from './services/auth.service';
 import { WebStorageService } from '../shared/services/web-storage.service';
 
