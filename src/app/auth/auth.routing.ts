@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 // Components
 import { LoginComponent } from './components/login.component';
 import { LogoutComponent } from './components/logout.component';
+// Services
+import { isAuthenticated } from "../shared/guards/is-authenticated";
 
 const authRoutes: Routes = [
     {
@@ -11,7 +13,8 @@ const authRoutes: Routes = [
     },
     {
         path: 'logout',
-        component: LogoutComponent
+        component: LogoutComponent,
+        canActivate: [isAuthenticated],
     }
 ];
 
