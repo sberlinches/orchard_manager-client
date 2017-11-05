@@ -41,9 +41,9 @@ export class AuthService {
 
     /**
      * Gets the URL to redirect after a succeed login.
-     * By default 'dashboard'
+     * By default 'dashboard'.
      *
-     * @returns {string} The URL to redirect to
+     * @returns {string} The URL to redirect
      */
     getRedirectUrl(): string {
         return (this.redirectUrl)? this.redirectUrl: '/dashboard'; // TODO: literals
@@ -51,10 +51,14 @@ export class AuthService {
 
     /**
      * Sets the URL to redirect after a succeed login.
+     * '/logout' is not a URL to redirect.
      *
-     * @param {string} url The URL to redirect to
+     * @param {string} url The URL to redirect
      */
     setRedirectUrl(url: string): void {
-        this.redirectUrl = url;
+
+        if(url != '/logout') { // TODO: literals
+            this.redirectUrl = url;
+        }
     }
 }
