@@ -1,0 +1,52 @@
+<article class="article">
+    <header class="article-header">
+        <h2>Login</h2>
+    </header>
+    <hr />
+
+    <form class="article-main" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+        <div *ngIf="errorMessage" class="error">
+            {{ errorMessage }}
+        </div>
+
+        <div>
+            <label for="username">Username</label>
+            <input type="text"
+                   id="username"
+                   name="username"
+                   class="form-control"
+                   [(ngModel)]="login.username"
+                   minlength="2"
+                   maxlength="30"
+                   required>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   class="form-control"
+                   [(ngModel)]="login.password"
+                   minlength="4"
+                   maxlength="30"
+                   required>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox"
+                       name="rememberMe"
+                       [(ngModel)]="login.isPersistent">
+                Remember me
+            </label>
+        </div>
+
+        <div>
+            <button type="submit"
+                    class="btn btn-primary"
+                    [disabled]="!loginForm.valid">Log in</button>
+        </div>
+    </form>
+</article>

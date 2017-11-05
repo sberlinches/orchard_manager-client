@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
 import { routing, appRoutingProviders } from './app.routing';
 
+import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module'
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
 import { UserModule } from './user/user.module'
@@ -20,6 +21,7 @@ import { UserModule } from './user/user.module'
     imports: [
         BrowserModule,
         routing,
+        AuthModule,
         DashboardModule,
         SettingsModule,
         UserModule
