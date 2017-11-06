@@ -15,25 +15,21 @@
             <input type="text"
                    id="username"
                    name="username"
-                   class="form-control"
                    [(ngModel)]="login.username"
                    minlength="2"
                    maxlength="30"
                    required>
         </div>
-
         <div>
             <label for="password">Password</label>
             <input type="password"
                    id="password"
                    name="password"
-                   class="form-control"
                    [(ngModel)]="login.password"
                    minlength="4"
                    maxlength="30"
                    required>
         </div>
-
         <div>
             <label>
                 <input type="checkbox"
@@ -42,7 +38,6 @@
                 Remember me
             </label>
         </div>
-
         <div>
             <button type="submit"
                     class="btn btn-primary"
