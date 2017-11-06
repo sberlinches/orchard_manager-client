@@ -6,10 +6,11 @@ import { authRouting } from './auth.routing';
 // Declarations
 import { LoginComponent } from './components/login.component';
 import { LogoutComponent } from './components/logout.component';
+import { SignUpComponent } from './components/sign-up.component';
 // Providers
 import { AuthService } from './services/auth.service';
-import { WebStorageService } from '../shared/services/web-storage.service';
 import { isAuthenticated } from "../shared/guards/is-authenticated";
+import { WebStorageService } from '../shared/services/web-storage.service';
 
 @NgModule({
     imports: [
@@ -19,12 +20,13 @@ import { isAuthenticated } from "../shared/guards/is-authenticated";
     ],
     declarations: [
         LoginComponent,
-        LogoutComponent
+        LogoutComponent,
+        SignUpComponent
     ],
     providers: [
         AuthService,
-        WebStorageService,
-        isAuthenticated
+        isAuthenticated,
+        WebStorageService
     ]
 })
 

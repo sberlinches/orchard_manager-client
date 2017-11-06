@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // Services
 import { WebStorageService } from '../../shared/services/web-storage.service';
+// Models
+import { User } from '../../user/user';
 
 @Injectable()
 export class AuthService {
@@ -15,16 +17,7 @@ export class AuthService {
     ) {}
 
     /**
-     * Checks whether the user is logged or not
-     *
-     * @returns {boolean}
-     */
-    isLoggedIn(): boolean {
-        return (this.webStorageService.getItem('user')); // TODO: literals
-    }
-
-    /**
-     * Sends via http the username and password and retrieves the user that matches.
+     * Sends via http the username and password and retrieves the user that matches
      *
      * @param {string} username
      * @param {string} password
@@ -34,14 +27,38 @@ export class AuthService {
 
         return this.http
             .post(
-                'http://localhost:8080/api/auth/login', // TODO: literals
+                'http://localhost:8080/api/auth/login', // TODO: API url file
                 { username: username, password: password }
             );
     }
 
     /**
-     * Gets the URL to redirect after a succeed login.
-     * By default 'dashboard'.
+     * Sends via http the user object to persist it in the DB
+     *
+     * @param {User} user The user object
+     * @returns {Observable<Object>}
+     */
+    createUser(user: User): Observable<object> {
+
+        return this.http
+            .post(
+                'http://localhost:8080/auth/signup/', // TODO: API url file
+                user
+            );
+    }
+
+    /**
+     * Checks whether the user is logged or not
+     *
+     * @returns {boolean}
+     */
+    isLoggedIn(): boolean {
+        return (this.webStorageService.getItem('user')); // TODO: literals
+    }
+
+    /**
+     * Gets the URL to redirect after a succeed login
+     * By default 'dashboard'
      *
      * @returns {string} The URL to redirect
      */
@@ -50,14 +67,14 @@ export class AuthService {
     }
 
     /**
-     * Sets the URL to redirect after a succeed login.
-     * '/logout' is not a URL to redirect.
+     * Sets the URL to redirect after a succeed login
+     * '/login' and '/logout' are not URLs to redirect
      *
      * @param {string} url The URL to redirect
      */
     setRedirectUrl(url: string): void {
 
-        if(url != '/logout') { // TODO: literals
+        if(url !== '/login' && url !== '/logout') { // TODO: literals
             this.redirectUrl = url;
         }
     }
