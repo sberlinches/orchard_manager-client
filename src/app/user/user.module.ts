@@ -8,7 +8,7 @@ import { userRouting } from './user.routing';
 import { UserComponent } from './components/user.component';
 import { UserListComponent } from './components/user-list.component';
 // Providers
-import { UserService } from "./services/user.service";
+import { UserService } from "./user.service";
 import { isAuthenticated } from "../shared/guards/is-authenticated";
 
 @NgModule({
