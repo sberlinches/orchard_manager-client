@@ -9,7 +9,6 @@ import { UserComponent } from './components/user.component';
 import { UserListComponent } from './components/user-list.component';
 // Providers
 import { UserService } from "./user.service";
-import { isAuthenticated } from "../shared/guards/is-authenticated";
 
 @NgModule({
     imports: [
@@ -23,8 +22,7 @@ import { isAuthenticated } from "../shared/guards/is-authenticated";
         UserListComponent
     ],
     providers: [
-        UserService,
-        isAuthenticated
+        UserService
     ]
 })
 

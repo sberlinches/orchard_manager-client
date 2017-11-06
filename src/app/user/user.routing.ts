@@ -4,13 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './components/user.component';
 import { UserListComponent } from './components/user-list.component';
 // Services
-import { isAuthenticated } from "../shared/guards/is-authenticated";
+import { IsAuthenticated } from "../shared/guards/is-authenticated";
 
 const userRoutes: Routes = [
     {
         path: 'users',
         component: UserComponent,
-        canActivate: [isAuthenticated],
+        canActivate: [IsAuthenticated],
         children: [
             {
                 path: '',

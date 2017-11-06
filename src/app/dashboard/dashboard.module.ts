@@ -5,8 +5,6 @@ import { dashboardRouting } from './dashboard.routing';
 // Declarations
 import { DashboardComponent } from './components/dashboard.component';
 import { SensorAddComponent } from '../sensor/components/sensor-add.component';
-// Providers
-import { isAuthenticated } from "../shared/guards/is-authenticated";
 
 @NgModule({
     imports: [
@@ -20,9 +18,7 @@ import { isAuthenticated } from "../shared/guards/is-authenticated";
     entryComponents: [
         SensorAddComponent
     ],
-    providers: [
-        isAuthenticated
-    ]
+    providers: []
 })
 
 export class DashboardModule {}

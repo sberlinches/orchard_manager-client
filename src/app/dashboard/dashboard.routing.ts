@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 // Components
 import { DashboardComponent } from './components/dashboard.component';
 // Services
-import { isAuthenticated } from "../shared/guards/is-authenticated";
+import { IsAuthenticated } from "../shared/guards/is-authenticated";
 
 const dashboardRoutes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [isAuthenticated],
+        canActivate: [IsAuthenticated],
     }
 ];
 

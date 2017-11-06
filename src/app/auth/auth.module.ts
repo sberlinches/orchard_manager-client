@@ -9,8 +9,6 @@ import { LogoutComponent } from './components/logout.component';
 import { SignUpComponent } from './components/sign-up.component';
 // Providers
 import { AuthService } from './auth.service';
-import { isAuthenticated } from "../shared/guards/is-authenticated";
-import { WebStorageService } from '../shared/services/web-storage.service';
 
 @NgModule({
     imports: [
@@ -24,9 +22,7 @@ import { WebStorageService } from '../shared/services/web-storage.service';
         SignUpComponent
     ],
     providers: [
-        AuthService,
-        isAuthenticated,
-        WebStorageService
+        AuthService
     ]
 })
 

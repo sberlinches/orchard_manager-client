@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login.component';
 import { LogoutComponent } from './components/logout.component';
 import { SignUpComponent } from './components/sign-up.component';
 // Services
-import { isAuthenticated } from "../shared/guards/is-authenticated";
+import { IsAuthenticated } from "../shared/guards/is-authenticated";
 
 const authRoutes: Routes = [
     {
@@ -15,7 +15,7 @@ const authRoutes: Routes = [
     {
         path: 'logout',
         component: LogoutComponent,
-        canActivate: [isAuthenticated],
+        canActivate: [IsAuthenticated],
     },
     {
         path: 'sign-up',
