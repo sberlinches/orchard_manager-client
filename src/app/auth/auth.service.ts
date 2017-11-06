@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // Services
-import { WebStorageService } from '../../shared/services/web-storage.service';
+import { WebStorageService } from '../shared/services/web-storage.service';
 // Models
-import { User } from '../../user/user';
+import { User } from '../user/user';
 
 @Injectable()
 export class AuthService {

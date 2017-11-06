@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 // Services
+import { AuthService } from '../auth.service';
 import { WebStorageService } from '../../shared/services/web-storage.service';
-import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'login',
@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 
 export class LoginComponent {
 
-    errorMessage: string;
+    private errorMessage: string;
 
     constructor(
         private router: Router,
@@ -20,7 +20,7 @@ export class LoginComponent {
     ) {}
 
     /**
-     * Handles the login form.
+     * Handles the login form
      *
      * @param loginForm The login form
      */
@@ -36,13 +36,13 @@ export class LoginComponent {
     }
 
     /**
-     * Log the user in the application.
-     * Sets all the user details in storage.
-     * And redirects.
+     * Log the user in the application
+     * Sets all the user details in storage (login)
+     * And redirects
      *
      * @param {string} username The user username
      * @param {string} password The user password
-     * @param {boolean} isPersistent Indicates whether the data is going to persist until is explicitly deleted, or not.
+     * @param {boolean} isPersistent Indicates whether the data is going to persist until is explicitly deleted, or not
      */
     login(username: string, password: string, isPersistent: boolean): void {
 

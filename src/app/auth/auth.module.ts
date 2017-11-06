@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login.component';
 import { LogoutComponent } from './components/logout.component';
 import { SignUpComponent } from './components/sign-up.component';
 // Providers
-import { AuthService } from './services/auth.service';
+import { AuthService } from './auth.service';
 import { isAuthenticated } from "../shared/guards/is-authenticated";
 import { WebStorageService } from '../shared/services/web-storage.service';
 
