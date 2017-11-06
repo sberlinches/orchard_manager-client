@@ -33,14 +33,13 @@
         <div>
             <label>
                 <input type="checkbox"
-                       name="rememberMe"
+                       name="isPersistent"
                        [(ngModel)]="login.isPersistent">
                 Remember me
             </label>
         </div>
         <div>
             <button type="submit"
-                    class="btn btn-primary"
                     [disabled]="!loginForm.valid">Log in</button>
         </div>
     </form>
