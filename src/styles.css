@@ -94,14 +94,17 @@ form div {
     border-bottom: 1px solid #3a3a3a;
 }
 
+.article {
+    border-bottom: 1px solid #3a3a3a;
+}
+
 .article-header {
     padding: 20px;
-    border-bottom: 1px dashed #3a3a3a;
 }
 
 .article-main {
+    border-top: 1px dashed #3a3a3a;
     padding: 20px;
-    border-bottom: 1px solid #3a3a3a;
 }
 
 .error {

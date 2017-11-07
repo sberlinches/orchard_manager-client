@@ -47,11 +47,12 @@
             <div class="pull-right">
                 <button>Delete plant</button>
                 <button>Change variety</button>
-                <button (click)="addSensor()">Add/Remove sensor</button>
+                <button *ngIf="variety.sensorId" (click)="removeSensor()">Remove sensor</button>
+                <button *ngIf="!variety.sensorId" (click)="addSensor()">Add sensor</button>
             </div>
         </header>
 
-        <main class="article-main">
+        <!--<main class="article-main">
             <table>
                 <thead>
                     <tr>
@@ -94,7 +95,7 @@
                     </tr>
                 </tbody>
             </table>
-        </main>
+        </main>-->
     </article>
 </main>
 <hr />
