@@ -63,10 +63,6 @@ form div {
     display: inline-block;
 }
 
-#body-header button {
-    margin: -5px 0;
-}
-
 #body-nav {
     position: fixed;
     top: 50px;
@@ -86,6 +82,11 @@ form div {
 
 .pull-left {
     display: inline-block;
+}
+
+.pull-right button,
+.pull-right button {
+    margin: -5px 0;
 }
 
 .main-header {

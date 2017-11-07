@@ -13,6 +13,7 @@ export class WebStorageService {
      * @returns {any} The data retrieved
      */
     public getItem(key: string): any {
+
         let storage = (sessionStorage.getItem(key))? sessionStorage.getItem(key): localStorage.getItem(key);
         return JSON.parse(storage);
     }
@@ -43,6 +44,7 @@ export class WebStorageService {
      * @param {string} key The key which the data will be deleted
      */
     public removeItem(key: string): void {
+
         sessionStorage.removeItem(key);
         localStorage.removeItem(key);
     }
@@ -52,6 +54,7 @@ export class WebStorageService {
      * This method does not distinguish session or local, so it will clear both.
      */
     public clear(): void {
+
         sessionStorage.clear();
         localStorage.clear();
     }

@@ -2,35 +2,53 @@
     <h2>My orchards</h2>
     <button>New orchard</button>
     <ul>
-        <li><a href="#">Orchard 1</a></li>
-        <li><a href="#">Orchard 2</a></li>
+        <li *ngFor="let zone of zones | filter:{roleId: 1}">
+            <a (click)="getZone(zone.id)">{{ zone.alias }}</a>
+        </li>
     </ul>
 
     <h2>Collaborating</h2>
     <ul>
-        <li><a href="#">Orchard 3</a></li>
-        <li><a href="#">Orchard 4</a></li>
+        <li *ngFor="let zone of zones | filter:{roleId: 2}">
+            <a (click)="getZone(zone.id)">{{ zone.alias }}</a>
+        </li>
+    </ul>
+
+    <h2>Following</h2>
+    <ul>
+        <li *ngFor="let zone of zones | filter:{roleId: 3}">
+            <a (click)="getZone(zone.id)">{{ zone.alias }}</a>
+        </li>
     </ul>
 </nav>
 <hr />
 
-<main id="body-main">
+<main id="body-main" *ngIf="zone">
     <header class="main-header">
-        <h2>Orchard 1</h2>
-        <button>Rename orchard</button>
-        <button>Delete orchard</button>
-        <button>Add plant</button>
-        <button>Add collaborator</button>
+        <div class="pull-left">
+            <h2>{{ zone.alias }}</h2>
+        </div>
+
+        <div class="pull-right">
+            <button>Rename orchard</button>
+            <button>Delete orchard</button>
+            <button>Add plant</button>
+            <button>Add collaborator</button>
+        </div>
     </header>
     <hr />
 
-    <article class="article">
+    <article class="article" *ngFor="let variety of zone.varieties">
         <header class="article-header">
-            <h3>Plant 1</h3>
-            <button>Rename plant</button>
-            <button>Delete plant</button>
-            <button>Change variety</button>
-            <button (click)="addSensor()">Add/Remove sensor</button>
+            <div class="pull-left">
+                <h3><a>{{ variety.name }}</a></h3>
+            </div>
+
+            <div class="pull-right">
+                <button>Delete plant</button>
+                <button>Change variety</button>
+                <button (click)="addSensor()">Add/Remove sensor</button>
+            </div>
         </header>
 
         <main class="article-main">
