@@ -1,13 +1,16 @@
 <header id="body-header">
     <nav>
-        <h1><a routerLink="/dashboard">{{ title }}</a></h1>
-        <a routerLink="/users">Users</a>
-        <p>Hi, user!
-            <a routerLink="/settings">Settings</a>
-            <button type="button" routerLink="/login">Login</button>
-            <button type="button" routerLink="/sign-up">Sign up</button>
-            <button type="button" routerLink="/logout">Sign out</button>
-        </p>
+        <div class="pull-left">
+            <h1><a routerLink="/dashboard">{{ title }}</a></h1>
+            <a *ngIf="isLoggedIn" routerLink="/users">Users</a>
+        </div>
+
+        <div class="pull-right">
+            <p *ngIf="isLoggedIn">Hi, {{ user.username }}! <a routerLink="/settings">Settings</a></p>
+            <button *ngIf="!isLoggedIn" type="button" routerLink="/login">Login</button>
+            <button *ngIf="!isLoggedIn" type="button" routerLink="/sign-up">Sign up</button>
+            <button *ngIf="isLoggedIn" type="button" routerLink="/logout">Sign out</button>
+        </div>
     </nav>
 </header>
 <hr />

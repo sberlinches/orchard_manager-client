@@ -58,13 +58,13 @@ form div {
     padding: 20px;
 }
 
-#body-header h1 {
+#body-header h1, p {
+    margin: 0;
     display: inline-block;
 }
 
-#body-header p {
-    float: right;
-    margin: 0;
+#body-header button {
+    margin: -5px 0;
 }
 
 #body-nav {
@@ -78,6 +78,14 @@ form div {
 
 #body-main {
     margin-left: 200px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    display: inline-block;
 }
 
 .main-header {

@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
+import { AuthService } from './auth/auth.service';
+// Services
+import { WebStorageService } from './shared/services/web-storage.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
 })
 
-export class AppComponent {
-    title = 'orchardManager-client';
+export class AppComponent implements DoCheck {
+
+    private title = 'orchardManager-client';
+    private isLoggedIn: boolean;
+    private user: object;
+
+    constructor(
+        private authService: AuthService,
+        private webStorageService: WebStorageService
+    ) {}
+
+    /**
+     * Every fucking single event executes these actions // TODO: Research component interactions
+     */
+    ngDoCheck() {
+        this.isLoggedIn = this.authService.isLoggedIn();
+        this.user = this.webStorageService.getItem('user');
+    }
 }
