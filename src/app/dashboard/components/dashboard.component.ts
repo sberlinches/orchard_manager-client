@@ -32,6 +32,21 @@ export class DashboardComponent implements OnInit {
         this.getZonesByUser(this.user.id);
     }
 
+    // TODO: create a service por this permissions thing!!!!
+    private roleId: number;
+    private setActiveRole(value: number): void {
+        this.roleId = value;
+    }
+    private canCreate(): boolean {
+        return (this.roleId === 1);
+    }
+    private canEdit(): boolean {
+        return (this.roleId === 1 || this.roleId === 2);
+    }
+    private canDelete(): boolean {
+        return (this.roleId === 1);
+    }
+
     /**
      * Gets a zone and optionally its associated details
      *
