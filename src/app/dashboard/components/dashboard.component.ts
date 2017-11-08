@@ -1,36 +1,37 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, ViewChild } from '@angular/core';
 // Services
 import { WebStorageService } from "../../shared/services/web-storage.service";
+import { SensorService } from "../../sensor/sensor.service";
 import { ZoneService } from "../../zone/zone.service";
 // Models
 import { Zone } from "../../zone/zone";
 import { User } from "../../user/user";
 // Components
-import { SensorAddComponent } from '../../sensor/components/sensor-add.component';
+import { ZoneAddSensorComponent } from '../../zone/components/zone-add-sensor.component';
 
 @Component({
     selector: 'dashboard',
-    entryComponents: [ SensorAddComponent ],
+    entryComponents: [ ZoneAddSensorComponent ],
     templateUrl: '../views/dashboard.component.html'
 })
 
 export class DashboardComponent implements OnInit {
+
+    @ViewChild('modal', {read: ViewContainerRef}) modal: ViewContainerRef;
 
     private user: User;
     private zones: Zone[];
     private zone: Zone;
 
     constructor(
+        private sensorService: SensorService,
         private zoneService: ZoneService,
         private webStorageService: WebStorageService,
-
-        private componentFactoryResolver: ComponentFactoryResolver,
-        private viewContainerRef: ViewContainerRef
-    ) {
-        this.user = this.webStorageService.getItem('user');
-    }
+        private componentFactoryResolver: ComponentFactoryResolver
+    ) {}
 
     ngOnInit() {
+        this.user = this.webStorageService.getItem('user');
         this.getZonesByUser(this.user.id);
     }
 
@@ -62,11 +63,18 @@ export class DashboardComponent implements OnInit {
             );
     }
 
-    private addSensor() {
+    /**
+     *
+     */
+    addSensor() {
 
-        const factory = this.componentFactoryResolver.resolveComponentFactory(SensorAddComponent);
-        const ref = this.viewContainerRef.createComponent(factory);
+        this.modal.clear();
 
-        ref.changeDetectorRef.detectChanges();
+        let dialogComponentFactory  = this.componentFactoryResolver.resolveComponentFactory(ZoneAddSensorComponent);
+        let dialogComponentRef      = this.modal.createComponent(dialogComponentFactory);
+
+        dialogComponentRef.instance.removeModal.subscribe(() => {
+            dialogComponentRef.destroy();
+        })
     }
 }

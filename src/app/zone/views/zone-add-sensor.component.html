@@ -1,0 +1,26 @@
+<article class="modal">
+    <div class="modal-container">
+        <header class="modal-header">
+            <h2>Add sensor</h2>
+        </header>
+        <hr />
+
+        <form class="modal-main" #zoneAddSensorForm="ngForm" (ngSubmit)="addSensor(zoneAddSensorForm)">
+            <div>
+                <label for="sensor">Sensor</label>
+                <select id="sensor"
+                        name="sensor"
+                        [ngModel]="sensors">
+                    <option *ngFor="let sensor of sensors" [ngValue]="sensor.id">{{ sensor.serial }}</option>
+                </select>
+
+            </div>
+            <div>
+                <button type="submit"
+                        [disabled]="submitted || !zoneAddSensorForm.valid">Submit</button>
+                <button type="button"
+                        (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</article>
