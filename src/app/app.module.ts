@@ -5,7 +5,7 @@ import { routing, appRoutingProviders } from './app.routing';
 import { AuthModule } from './auth/auth.module'
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SettingsModule } from './settings/settings.module';
-import { UserModule } from './user/user.module'
+import { UserModule } from './user/user.module';
 // Declarations
 import { AppComponent } from './app.component';
 // Providers
