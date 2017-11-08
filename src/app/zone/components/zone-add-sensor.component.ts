@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 // Services
 import { WebStorageService } from "../../shared/services/web-storage.service";
 import { SensorService } from '../../sensor/sensor.service';
+import { ZoneService } from '../../zone/zone.service';
 // Models
 import { Sensor } from '../../sensor/sensor';
 
@@ -12,12 +13,18 @@ import { Sensor } from '../../sensor/sensor';
 
 export class ZoneAddSensorComponent implements OnInit {
 
-    removeModal = new EventEmitter();
+    cancelled = new EventEmitter();
+    submitted = new EventEmitter();
+
+    zoneId: number;
+    varietyId: number; // TODO: Research an elegant way to pass parameteres from the parent to the child (here)
+
     private user: any;
     private sensors: Sensor[];
 
     constructor(
         private sensorService: SensorService,
+        private zoneService: ZoneService,
         private webStorageService: WebStorageService,
     ) {}
 
@@ -45,9 +52,25 @@ export class ZoneAddSensorComponent implements OnInit {
     }
 
     /**
+     * Adds a sensor to the zone-variety
+     * // TODO: validate the modal before submit
+     *
+     * @param form
+     */
+    addSensor(form) {
+
+        this.zoneService
+            .addSensor(this.zoneId, this.varietyId, form.value)
+            .subscribe(
+                result => this.submitted.emit(),
+                error => console.error(error) // TODO: error management
+            );
+    }
+
+    /**
      * Triggers the parent function and destroys the modal
      */
     cancel() {
-        this.removeModal.emit();
+        this.cancelled.emit();
     }
 }

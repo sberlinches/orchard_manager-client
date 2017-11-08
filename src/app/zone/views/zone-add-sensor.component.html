@@ -9,7 +9,7 @@
             <div>
                 <label for="sensor">Sensor</label>
                 <select id="sensor"
-                        name="sensor"
+                        name="sensorId"
                         [ngModel]="sensors">
                     <option *ngFor="let sensor of sensors" [ngValue]="sensor.id">{{ sensor.serial }}</option>
                 </select>
@@ -17,7 +17,7 @@
             </div>
             <div>
                 <button type="submit"
-                        [disabled]="submitted || !zoneAddSensorForm.valid">Submit</button>
+                        [disabled]="!zoneAddSensorForm.valid">Submit</button>
                 <button type="button"
                         (click)="cancel()">Cancel</button>
             </div>

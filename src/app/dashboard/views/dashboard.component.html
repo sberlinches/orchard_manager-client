@@ -49,8 +49,8 @@
             <div class="pull-right">
                 <button>Delete plant</button>
                 <button>Change variety</button>
-                <button *ngIf="variety.sensorId" (click)="removeSensor()">Remove sensor</button>
-                <button *ngIf="!variety.sensorId" (click)="addSensor()">Add sensor</button>
+                <button *ngIf="variety.sensorId" (click)="removeSensor(zone.id, variety.id, variety.sensorId)">Remove sensor</button>
+                <button *ngIf="!variety.sensorId" (click)="addSensor(zone.id, variety.id)">Add sensor</button>
             </div>
         </header>
 
