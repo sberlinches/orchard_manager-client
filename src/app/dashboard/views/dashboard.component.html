@@ -43,7 +43,7 @@
     <article class="article" *ngFor="let variety of zone.varieties">
         <header class="article-header">
             <div class="pull-left">
-                <h3><a>{{ variety.name }}</a></h3>
+                <h3><a (click)="getLastLog(variety.plantLogId)">{{ variety.name }}</a></h3>
             </div>
 
             <div class="pull-right">
@@ -54,50 +54,59 @@
             </div>
         </header>
 
-        <!--<main class="article-main">
+        <main *ngIf="plantLog" class="article-main">
             <table>
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Soil moisture</th>
-                        <th>Soil temperature</th>
-                        <th>PH</th>
                         <th>Air temperature</th>
-                        <th>Air humidity</th>
+                        <th>Soil temperature</th>
                         <th>Light</th>
+                        <th>Air humidity</th>
+                        <th>Soil moisture</th>
+                        <th>PH</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Now</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
+                        <td>Current</td>
+                        <td>{{ plantLog.current.airTemp }}</td>
+                        <td>{{ plantLog.current.soilTemp }}</td>
+                        <td>{{ plantLog.current.light }}</td>
+                        <td>{{ plantLog.current.airHum }}</td>
+                        <td>{{ plantLog.current.soilMoist }}</td>
+                        <td>{{ plantLog.current.ph }}</td>
                     </tr>
                     <tr>
                         <td>Average</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
+                        <td>{{ plantLog.average.airTemp }}</td>
+                        <td>{{ plantLog.average.soilTemp }}</td>
+                        <td>{{ plantLog.average.light }}</td>
+                        <td>{{ plantLog.average.airHum }}</td>
+                        <td>{{ plantLog.average.soilMoist }}</td>
+                        <td>{{ plantLog.average.ph }}</td>
                     </tr>
                     <tr>
-                        <td>Recommended</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
-                        <td>20</td>
+                        <td>Recommended maximum</td>
+                        <td>{{ plantLog.recommendedMax.airTemp }}</td>
+                        <td>{{ plantLog.recommendedMax.soilTemp }}</td>
+                        <td>{{ plantLog.recommendedMax.light }}</td>
+                        <td>{{ plantLog.recommendedMax.airHum }}</td>
+                        <td>{{ plantLog.recommendedMax.soilMoist }}</td>
+                        <td>{{ plantLog.recommendedMax.ph }}</td>
+                    </tr>
+                    <tr>
+                        <td>Recommended minimum</td>
+                        <td>{{ plantLog.recommendedMin.airTemp }}</td>
+                        <td>{{ plantLog.recommendedMin.soilTemp }}</td>
+                        <td>{{ plantLog.recommendedMin.light }}</td>
+                        <td>{{ plantLog.recommendedMin.airHum }}</td>
+                        <td>{{ plantLog.recommendedMin.soilMoist }}</td>
+                        <td>{{ plantLog.recommendedMin.ph }}</td>
                     </tr>
                 </tbody>
             </table>
-        </main>-->
+        </main>
     </article>
 </main>
 <hr />

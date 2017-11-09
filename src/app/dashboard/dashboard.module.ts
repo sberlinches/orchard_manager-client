@@ -8,7 +8,7 @@ import { DashboardComponent } from './components/dashboard.component';
 import { ZoneAddSensorComponent } from '../zone/components/zone-add-sensor.component';
 import { ObjectFilterPipe } from "../shared/pipes/objectFilter.pipe";
 // Providers
-import { SensorService } from "../sensor/sensor.service";
+import { PlantLogService } from "../plant-log/plant-log.service";
 import { ZoneService } from "../zone/zone.service";
 
 @NgModule({
@@ -23,7 +23,7 @@ import { ZoneService } from "../zone/zone.service";
         ObjectFilterPipe
     ],
     providers: [
-        SensorService,
+        PlantLogService,
         ZoneService
     ]
 })

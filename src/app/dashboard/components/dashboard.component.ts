@@ -1,6 +1,7 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, ViewChild } from '@angular/core';
 // Services
 import { WebStorageService } from "../../shared/services/web-storage.service";
+import { PlantLogService } from "../../plant-log/plant-log.service";
 import { ZoneService } from "../../zone/zone.service";
 // Models
 import { Zone } from "../../zone/zone";
@@ -20,8 +21,10 @@ export class DashboardComponent implements OnInit {
     private user;
     private zones: Zone[];
     private zone: Zone;
+    private plantLog: object;
 
     constructor(
+        private plantLogService: PlantLogService,
         private zoneService: ZoneService,
         private webStorageService: WebStorageService,
         private componentFactoryResolver: ComponentFactoryResolver
@@ -53,6 +56,7 @@ export class DashboardComponent implements OnInit {
      * @param zoneId The zone id
      */
     private getZone(zoneId): void {
+
         this.zoneService
             .getZone(zoneId)
             .subscribe(
@@ -67,10 +71,28 @@ export class DashboardComponent implements OnInit {
      * @param userId The user id
      */
     private getZonesByUser(userId): void {
+
         this.zoneService
             .getZonesByUser(userId)
             .subscribe(
                 zones => this.zones = zones as Zone[],
+                error => console.error(error) // TODO: error management
+            );
+    }
+
+    /**
+     * Gets the last record on the log for the given plant
+     *
+     * @param {number} plantLogId
+     */
+    private getLastLog(plantLogId: number): void {
+
+        this.plantLog = null;
+
+        this.plantLogService
+            .getLastLog(plantLogId)
+            .subscribe(
+                plantLog => this.plantLog = plantLog as object,
                 error => console.error(error) // TODO: error management
             );
     }
