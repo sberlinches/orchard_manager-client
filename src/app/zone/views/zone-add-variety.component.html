@@ -1,0 +1,43 @@
+<article class="modal">
+    <div class="modal-container">
+        <header class="modal-header">
+            <h2>Add plant-variety</h2>
+        </header>
+        <hr />
+
+        <form class="modal-main" #zoneAddVarietyForm="ngForm" (ngSubmit)="onSubmit(zoneAddVarietyForm)">
+            <div>
+                <label for="plant">Plant</label>
+                <select id="plant"
+                        name="plantId"
+                        (change)="getVarietiesByPlant($event.target.value)">
+                    <option value=""></option>
+                    <option *ngFor="let plant of plants" [value]="plant.id">{{ plant.name }}</option>
+                </select>
+            </div>
+            <div>
+                <label for="variety">Variety</label>
+                <select id="variety"
+                        name="varietyId"
+                        [(ngModel)]="zonesVarietiesSensors.varietyId"
+                        required>
+                    <option *ngFor="let variety of varieties" [ngValue]="variety.id">{{ variety.name }}</option>
+                </select>
+            </div>
+            <div>
+                <label for="sensor">Sensor</label>
+                <select id="sensor"
+                        name="sensorId"
+                        [(ngModel)]="zonesVarietiesSensors.sensorId">
+                    <option *ngFor="let sensor of sensors" [ngValue]="sensor.id">{{ sensor.serial }}</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit"
+                        [disabled]="!zoneAddVarietyForm.valid">Submit</button>
+                <button type="button"
+                        (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</article>

@@ -6,12 +6,17 @@ import { ZoneService } from "../../zone/zone.service";
 // Models
 import { Zone } from "../../zone/zone";
 // Components
-import { ZoneAddSensorComponent } from '../../zone/components/zone-add-sensor.component';
 import { ZoneNewComponent } from '../../zone/components/zone-new.component';
+import { ZoneAddSensorComponent } from '../../zone/components/zone-add-sensor.component';
+import { ZoneAddVarietyComponent } from "../../zone/components/zone-add-variety.component";
 
 @Component({
     selector: 'dashboard',
-    entryComponents: [ ZoneAddSensorComponent, ZoneNewComponent ],
+    entryComponents: [
+        ZoneNewComponent,
+        ZoneAddSensorComponent,
+        ZoneAddVarietyComponent
+    ],
     templateUrl: '../views/dashboard.component.html'
 })
 
@@ -131,6 +136,48 @@ export class DashboardComponent implements OnInit {
                 response => {
                     console.log(response); // TODO: manage the response
                     this.getZonesByUser(this.user.id); // TODO: retrieve all the data again is not the solution!!
+                },
+                error => console.error(error) // TODO: error management
+            );
+    }
+
+    /**
+     * Adds a variety to a zone
+     *
+     * @param {number} zoneId
+     */
+    addVariety(zoneId: number): void {
+
+        this.modal.clear();
+
+        let dialogComponentFactory  = this.componentFactoryResolver.resolveComponentFactory(ZoneAddVarietyComponent);
+        let dialogComponentRef      = this.modal.createComponent(dialogComponentFactory);
+
+        dialogComponentRef.instance.zoneId = zoneId;
+
+        dialogComponentRef.instance.cancelled.subscribe(() => {
+            dialogComponentRef.destroy();
+        });
+
+        dialogComponentRef.instance.submitted.subscribe(() => {
+            dialogComponentRef.destroy();
+            this.getZone(zoneId); // TODO: retrieve all the data again is not the solution!!
+        })
+    }
+
+    /**
+     * Removes the sensor from the zone
+     *
+     * @param {number} zonesVarietiesSensorsId
+     */
+    removeVariety(zonesVarietiesSensorsId: number, zoneId: number): void {
+
+        this.zoneService
+            .removeVariety(zonesVarietiesSensorsId)
+            .subscribe(
+                response => {
+                    console.log(response); // TODO: manage the response
+                    this.getZone(zoneId); // TODO: retrieve all the data again is not the solution!!
                 },
                 error => console.error(error) // TODO: error management
             );

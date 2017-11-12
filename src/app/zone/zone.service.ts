@@ -13,7 +13,7 @@ export class ZoneService {
     ) {}
 
     /**
-     * Request and gets from the API the zone and optionally its associated details
+     * Gets a zone and optionally its associated details
      *
      * @param {number} zoneId
      * @returns {Observable<Object>}
@@ -21,12 +21,13 @@ export class ZoneService {
     getZone(zoneId: number): Observable<object> {
 
         return this.http
-            .get('http://localhost:8080/api/zones/' + zoneId) // TODO: API url file
+            .get('http://localhost:8080/api/zone/' + zoneId) // TODO: API url file
     }
 
     /**
-     * Request and gets from the API the zones where the user is: Owner, collaborator and follower
+     * Gets all zones where the user is: Owner, collaborator and follower
      *
+     * @param {number} userId
      * @returns {Observable<Object>}
      */
     getZonesByUser(userId: number): Observable<object> {
@@ -36,7 +37,7 @@ export class ZoneService {
     }
 
     /**
-     * Adds a new zone to the user
+     * Creates a new zone
      *
      * @param {Zone} zone
      * @returns {Observable<Object>}
@@ -60,6 +61,29 @@ export class ZoneService {
     }
 
     /**
+     * Adds a variety to a zone
+     *
+     * @param {ZonesVarietiesSensors} zonesVarietiesSensors
+     * @returns {Observable<Object>}
+     */
+    addVariety(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
+        return this.http
+            .post(`http://localhost:8080/api/zone/${zonesVarietiesSensors.zoneId}/variety`, zonesVarietiesSensors); // TODO: API url file
+    }
+
+    /**
+     * Removes the variety from the zone
+     *
+     * @param {number} zonesVarietiesSensorsId
+     * @returns {Observable<Object>}
+     */
+    removeVariety(zonesVarietiesSensorsId: number): Observable<object> {
+
+        return this.http
+            .delete(`http://localhost:8080/api/zones/variety/${zonesVarietiesSensorsId}`) // TODO: API url file
+    }
+
+    /**
      * Adds a sensor to a variety
      *
      * @param {ZonesVarietiesSensors} zonesVarietiesSensors
@@ -67,7 +91,7 @@ export class ZoneService {
      */
     addSensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
-            .post(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
+            .post(`http://localhost:8080/api/zone/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
     }
 
     /**
@@ -78,7 +102,7 @@ export class ZoneService {
      */
     modifySensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
-            .patch(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
+            .patch(`http://localhost:8080/api/zone/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
     }
 
     /**
@@ -89,6 +113,6 @@ export class ZoneService {
      */
     removeSensor(zonesVarietiesSensorsId: number): Observable<object> {
         return this.http
-            .delete(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensorsId}`); // TODO: API url file
+            .delete(`http://localhost:8080/api/zone/variety/sensor/${zonesVarietiesSensorsId}`); // TODO: API url file
     }
 }
