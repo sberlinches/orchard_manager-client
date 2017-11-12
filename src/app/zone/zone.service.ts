@@ -36,15 +36,15 @@ export class ZoneService {
     }
 
     /**
-     * Sends via http the zone object to persist it in the DB
+     * Adds a new zone to the user
      *
-     * @param {Zone} zone The zone object
-     * @returns {Observable<Object>}
+     * @param {Zone} zone
+     * @returns {Observable}
      */
-    addZone(zone: Zone): Observable<object> {
+    newZone(zone: Zone): Observable<object> {
 
         return this.http
-            .post('http://localhost:8080/api/zones/', zone); // TODO: API url file
+            .post('http://localhost:8080/api/zone/', zone); // TODO: API url file
     }
 
     /**

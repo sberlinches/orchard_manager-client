@@ -2,7 +2,7 @@
 
 <nav id="body-nav">
     <h2>My orchards</h2>
-    <button>New orchard</button>
+    <button (click)="newZone()">New orchard</button>
     <ul>
         <li *ngFor="let zone of zones | filter:{roleId: 1}">
             <a (click)="getZone(zone.id); setActiveRole(zone.roleId)">{{ zone.alias }}</a>
@@ -32,10 +32,10 @@
         </div>
 
         <div class="pull-right">
-            <button *ngIf="canEdit()">Rename orchard</button>
-            <button *ngIf="canDelete()">Delete orchard</button>
-            <button *ngIf="canCreate()">Add plant</button>
-            <button *ngIf="canCreate()">Add collaborator</button>
+            <button *ngIf="canEdit()" disabled>Rename orchard</button>
+            <button *ngIf="canDelete()" disabled>Delete orchard</button>
+            <button *ngIf="canCreate()" disabled>Add plant</button>
+            <button *ngIf="canCreate()" disabled>Add collaborator</button>
         </div>
     </header>
     <hr />
@@ -47,10 +47,10 @@
             </div>
 
             <div class="pull-right">
-                <button *ngIf="canDelete()">Delete plant</button>
-                <button *ngIf="canEdit()">Change variety</button>
+                <button *ngIf="canDelete()" disabled>Delete plant</button>
+                <button *ngIf="canEdit()" disabled>Change variety</button>
                 <button *ngIf="canDelete() && varietySensor.sensor.id" (click)="removeSensor(varietySensor.id, zone.id)">Remove sensor</button>
-                <button *ngIf="canEdit() && varietySensor.sensor.id" (click)="addSensor(varietySensor.id, zone.id)">Change sensor</button>
+                <button *ngIf="canEdit() && varietySensor.sensor.id" (click)="addSensor(varietySensor.id, zone.id)" disabled>Change sensor</button>
                 <button *ngIf="canCreate() && !varietySensor.sensor.id" (click)="addSensor(varietySensor.id, zone.id)">Add sensor</button>
             </div>
         </header>

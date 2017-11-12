@@ -1,0 +1,27 @@
+<article class="modal">
+    <div class="modal-container">
+        <header class="modal-header">
+            <h2>Create orchard</h2>
+        </header>
+        <hr />
+
+        <form class="modal-main" #newZoneForm="ngForm" (ngSubmit)="onSubmit(newZoneForm)">
+            <div>
+                <label for="alias">Alias</label>
+                <input type="text"
+                       id="alias"
+                       name="alias"
+                       [(ngModel)]="zone.alias"
+                       minlength="2"
+                       maxlength="30"
+                       required>
+            </div>
+            <div>
+                <button type="submit"
+                        [disabled]="!newZoneForm.valid">Submit</button>
+                <button type="button"
+                        (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</article>

@@ -6,6 +6,7 @@ import { dashboardRouting } from './dashboard.routing';
 // Declarations
 import { DashboardComponent } from './components/dashboard.component';
 import { ZoneAddSensorComponent } from '../zone/components/zone-add-sensor.component';
+import { ZoneNewComponent } from '../zone/components/zone-new.component';
 import { ObjectFilterPipe } from "../shared/pipes/objectFilter.pipe";
 // Providers
 import { PlantLogService } from "../plant-log/plant-log.service";
@@ -21,6 +22,7 @@ import { ZoneService } from "../zone/zone.service";
     declarations: [
         DashboardComponent,
         ZoneAddSensorComponent,
+        ZoneNewComponent,
         ObjectFilterPipe
     ],
     providers: [

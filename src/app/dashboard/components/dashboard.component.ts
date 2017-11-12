@@ -7,10 +7,11 @@ import { ZoneService } from "../../zone/zone.service";
 import { Zone } from "../../zone/zone";
 // Components
 import { ZoneAddSensorComponent } from '../../zone/components/zone-add-sensor.component';
+import { ZoneNewComponent } from '../../zone/components/zone-new.component';
 
 @Component({
     selector: 'dashboard',
-    entryComponents: [ ZoneAddSensorComponent ],
+    entryComponents: [ ZoneAddSensorComponent, ZoneNewComponent ],
     templateUrl: '../views/dashboard.component.html'
 })
 
@@ -95,6 +96,26 @@ export class DashboardComponent implements OnInit {
                 plantLog => this.plantLog = plantLog as object,
                 error => console.error(error) // TODO: error management
             );
+    }
+
+    /**
+     * Adds a new zone to the user
+     */
+    newZone(): void {
+
+        this.modal.clear();
+
+        let dialogComponentFactory  = this.componentFactoryResolver.resolveComponentFactory(ZoneNewComponent);
+        let dialogComponentRef      = this.modal.createComponent(dialogComponentFactory);
+
+        dialogComponentRef.instance.cancelled.subscribe(() => {
+            dialogComponentRef.destroy();
+        });
+
+        dialogComponentRef.instance.submitted.subscribe(() => {
+            dialogComponentRef.destroy();
+            this.getZonesByUser(this.user.id); // TODO: retrieve all the data again is not the solution!!
+        })
     }
 
     /**
