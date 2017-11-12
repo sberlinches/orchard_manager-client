@@ -5,16 +5,15 @@ import { ZoneService } from '../zone.service';
 import { Zone } from '../zone';
 
 @Component({
-    selector: 'zone-add-sensor',
+    selector: 'zone-new',
     templateUrl: '../views/zone-new.component.html'
 })
 
 export class ZoneNewComponent implements OnInit {
 
-    cancelled = new EventEmitter();
-    submitted = new EventEmitter();
-
-    zone: Zone;
+    public cancelled = new EventEmitter();
+    public submitted = new EventEmitter();
+    private zone: Zone;
 
     constructor(
         private zoneService: ZoneService,
