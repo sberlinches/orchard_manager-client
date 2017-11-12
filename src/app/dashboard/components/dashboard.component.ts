@@ -147,7 +147,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param {number} zonesVarietiesSensorsId
      */
-    modifySensor(zonesVarietiesSensorsId: number, zoneId: number): void {
+    removeSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.zoneService
             .removeSensor(zonesVarietiesSensorsId)
