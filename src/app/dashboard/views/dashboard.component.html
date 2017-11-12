@@ -40,17 +40,18 @@
     </header>
     <hr />
 
-    <article class="article" *ngFor="let variety of zone.varieties">
+    <article class="article" *ngFor="let varietySensor of zone.varietiesSensors">
         <header class="article-header">
             <div class="pull-left">
-                <h3><a (click)="getLastLog(variety.plantLogId)">{{ variety.name }}</a></h3>
+                <h3><a (click)="getLastLog(varietySensor.id)">{{ varietySensor.variety.name }}</a></h3>
             </div>
 
             <div class="pull-right">
                 <button *ngIf="canDelete()">Delete plant</button>
                 <button *ngIf="canEdit()">Change variety</button>
-                <button *ngIf="canDelete() && variety.sensorId" (click)="removeSensor(zone.id, variety.id, variety.sensorId)">Remove sensor</button>
-                <button *ngIf="canCreate() && !variety.sensorId" (click)="addSensor(zone.id, variety.id)">Add sensor</button>
+                <button *ngIf="canDelete() && varietySensor.sensor.id" (click)="removeSensor(varietySensor.id, zone.id)">Remove sensor</button>
+                <button *ngIf="canEdit() && varietySensor.sensor.id" (click)="addSensor(varietySensor.id, zone.id)">Change sensor</button>
+                <button *ngIf="canCreate() && !varietySensor.sensor.id" (click)="addSensor(varietySensor.id, zone.id)">Add sensor</button>
             </div>
         </header>
 

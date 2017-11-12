@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
     private user;
     private zones: Zone[];
-    private zone: Zone;
+    private zone: any;
     private plantLog: object;
 
     constructor(
@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
         this.zoneService
             .getZone(zoneId)
             .subscribe(
-                zone => this.zone = zone as Zone,
+                zone => this.zone = zone,
                 error => console.error(error) // TODO: error management
             );
     }
@@ -98,19 +98,18 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
+     * Adds a sensor to a zone
      *
-     * @param {number} zoneId
-     * @param {number} varietyId
+     * @param {number} zonesVarietiesSensorsId
      */
-    addSensor(zoneId: number, varietyId: number): void {
+    addSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.modal.clear();
 
         let dialogComponentFactory  = this.componentFactoryResolver.resolveComponentFactory(ZoneAddSensorComponent);
         let dialogComponentRef      = this.modal.createComponent(dialogComponentFactory);
 
-        dialogComponentRef.instance.zoneId      = zoneId;
-        dialogComponentRef.instance.varietyId   = varietyId;
+        dialogComponentRef.instance.zonesVarietiesSensorsId = zonesVarietiesSensorsId;
 
         dialogComponentRef.instance.cancelled.subscribe(() => {
             dialogComponentRef.destroy();
@@ -123,15 +122,14 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
+     * Removes the sensor from a zone
      *
-     * @param {number} zoneId
-     * @param {number} varietyId
-     * @param {number} sensorId
+     * @param {number} zonesVarietiesSensorsId
      */
-    removeSensor(zoneId: number, varietyId: number, sensorId: number): void {
+    modifySensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.zoneService
-            .removeSensor(zoneId, varietyId, sensorId)
+            .removeSensor(zonesVarietiesSensorsId)
             .subscribe(
                 response => {
                     console.log(response); // TODO: manage the response

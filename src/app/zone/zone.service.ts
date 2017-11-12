@@ -48,25 +48,37 @@ export class ZoneService {
     }
 
     /**
+     * Adds a sensor to a certain zone
      *
-     * @param {number} zoneId The zone id
-     * @param {number} varietyId The variety id
+     * @param {number} zonesVarietiesSensorsId
      * @param {Sensor} sensor
-     * @returns {Observable<Object>}
+     * @returns {Observable}
      */
-    addSensor(zoneId: number, varietyId: number, sensor: Sensor): Observable<object> {
+    addSensor(zonesVarietiesSensorsId: number, sensor: Sensor): Observable<object> {
         return this.http
-            .post('http://localhost:8080/api/zones/' + zoneId + '/varieties/' + varietyId + '/sensors', sensor); // TODO: API url file
+            .post(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensorsId}`, sensor); // TODO: API url file
     }
 
     /**
-     * @param {number} zoneId The zone id
-     * @param {number} varietyId The variety id
-     * @param {number} sensorId The sensor id
-     * @returns {Observable<Object>}
+     * Modifies the sensor of a zone
+     *
+     * @param {number} zonesVarietiesSensorsId
+     * @param {Sensor} sensor
+     * @returns {Observable}
      */
-    removeSensor(zoneId: number, varietyId: number, sensorId: number): Observable<object> {
+    modifySensor(zonesVarietiesSensorsId: number, sensor: Sensor): Observable<object> {
         return this.http
-            .delete('http://localhost:8080/api/zones/' + zoneId + '/varieties/' + varietyId + '/sensors/' + sensorId); // TODO: API url file
+            .patch(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensorsId}`, sensor); // TODO: API url file
+    }
+
+    /**
+     * Removes the sensor from a certain zone
+     *
+     * @param {number} zonesVarietiesSensorsId
+     * @returns {Observable}
+     */
+    removeSensor(zonesVarietiesSensorsId: number): Observable<object> {
+        return this.http
+            .delete(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensorsId}`); // TODO: API url file
     }
 }

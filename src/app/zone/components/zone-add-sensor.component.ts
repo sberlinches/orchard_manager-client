@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 // Services
 import { WebStorageService } from "../../shared/services/web-storage.service";
 import { SensorService } from '../../sensor/sensor.service';
-import { ZoneService } from '../../zone/zone.service';
+import { ZoneService } from '../zone.service';
 // Models
 import { Sensor } from '../../sensor/sensor';
 
@@ -16,8 +16,7 @@ export class ZoneAddSensorComponent implements OnInit {
     cancelled = new EventEmitter();
     submitted = new EventEmitter();
 
-    zoneId: number;
-    varietyId: number; // TODO: Research an elegant way to pass parameteres from the parent to the child (here)
+    zonesVarietiesSensorsId: number; // TODO: Research an elegant way to pass parameteres from the parent to the child (here)
 
     private user: any;
     private sensors: Sensor[];
@@ -39,7 +38,7 @@ export class ZoneAddSensorComponent implements OnInit {
     /**
      * Gets the sensors registered by the user
      *
-     * @param {number} userId The user id
+     * @param {number} userId
      */
     getSensorsByUser(userId: number): void {
 
@@ -52,7 +51,7 @@ export class ZoneAddSensorComponent implements OnInit {
     }
 
     /**
-     * Adds a sensor to the zone-variety
+     * Adds a sensor to a certain zone
      * // TODO: validate the modal before submit
      *
      * @param form
@@ -60,7 +59,7 @@ export class ZoneAddSensorComponent implements OnInit {
     addSensor(form) {
 
         this.zoneService
-            .addSensor(this.zoneId, this.varietyId, form.value)
+            .addSensor(this.zonesVarietiesSensorsId, form.value)
             .subscribe(
                 result => this.submitted.emit(),
                 error => console.error(error) // TODO: error management
