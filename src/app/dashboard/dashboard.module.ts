@@ -9,6 +9,7 @@ import { ZoneAddSensorComponent } from '../zone/components/zone-add-sensor.compo
 import { ObjectFilterPipe } from "../shared/pipes/objectFilter.pipe";
 // Providers
 import { PlantLogService } from "../plant-log/plant-log.service";
+import { SensorService } from "../sensor/sensor.service";
 import { ZoneService } from "../zone/zone.service";
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ZoneService } from "../zone/zone.service";
     ],
     providers: [
         PlantLogService,
+        SensorService,
         ZoneService
     ]
 })
