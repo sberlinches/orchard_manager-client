@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 // Services
-import { WebStorageService } from "../../shared/services/web-storage.service";
 import { SensorService } from '../../sensor/sensor.service';
+import { WebStorageService } from "../../shared/services/web-storage.service";
 import { ZoneService } from '../zone.service';
 // Models
 import { Sensor } from '../../sensor/sensor';
@@ -22,8 +22,8 @@ export class ZoneAddSensorComponent implements OnInit {
 
     constructor(
         private sensorService: SensorService,
-        private zoneService: ZoneService,
         private webStorageService: WebStorageService,
+        private zoneService: ZoneService
     ) {}
 
     ngOnInit(): void {

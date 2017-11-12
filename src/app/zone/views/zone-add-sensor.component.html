@@ -10,7 +10,8 @@
                 <label for="sensor">Sensor</label>
                 <select id="sensor"
                         name="sensorId"
-                        [(ngModel)]="zonesVarietiesSensors.sensorId">
+                        [(ngModel)]="zonesVarietiesSensors.sensorId"
+                        required>
                     <option *ngFor="let sensor of sensors" [ngValue]="sensor.id">{{ sensor.serial }}</option>
                 </select>
             </div>
