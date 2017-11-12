@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // Models
-import { Sensor } from '../sensor/sensor';
 import { Zone } from './zone';
+import { ZonesVarietiesSensors } from './zonesVarietiesSensors';
 
 @Injectable()
 export class ZoneService {
@@ -48,31 +48,29 @@ export class ZoneService {
     }
 
     /**
-     * Adds a sensor to a certain zone
+     * Adds a sensor to a variety
      *
-     * @param {number} zonesVarietiesSensorsId
-     * @param {Sensor} sensor
-     * @returns {Observable}
+     * @param {ZonesVarietiesSensors} zonesVarietiesSensors
+     * @returns {Observable<Object>}
      */
-    addSensor(zonesVarietiesSensorsId: number, sensor: Sensor): Observable<object> {
+    addSensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
-            .post(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensorsId}`, sensor); // TODO: API url file
+            .post(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
     }
 
     /**
-     * Modifies the sensor of a zone
+     * Modifies the sensor of a variety
      *
-     * @param {number} zonesVarietiesSensorsId
-     * @param {Sensor} sensor
-     * @returns {Observable}
+     * @param {ZonesVarietiesSensors} zonesVarietiesSensors
+     * @returns {Observable<Object>}
      */
-    modifySensor(zonesVarietiesSensorsId: number, sensor: Sensor): Observable<object> {
+    modifySensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
-            .patch(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensorsId}`, sensor); // TODO: API url file
+            .patch(`http://localhost:8080/api/zones/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
     }
 
     /**
-     * Removes the sensor from a certain zone
+     * Removes the sensor from a variety
      *
      * @param {number} zonesVarietiesSensorsId
      * @returns {Observable}

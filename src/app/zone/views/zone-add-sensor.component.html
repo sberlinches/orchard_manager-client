@@ -5,15 +5,14 @@
         </header>
         <hr />
 
-        <form class="modal-main" #zoneAddSensorForm="ngForm" (ngSubmit)="addSensor(zoneAddSensorForm)">
+        <form class="modal-main" #zoneAddSensorForm="ngForm" (ngSubmit)="onSubmit(zoneAddSensorForm)">
             <div>
                 <label for="sensor">Sensor</label>
                 <select id="sensor"
                         name="sensorId"
-                        [ngModel]="sensors">
+                        [(ngModel)]="zonesVarietiesSensors.sensorId">
                     <option *ngFor="let sensor of sensors" [ngValue]="sensor.id">{{ sensor.serial }}</option>
                 </select>
-
             </div>
             <div>
                 <button type="submit"

@@ -5,6 +5,7 @@ import { SensorService } from '../../sensor/sensor.service';
 import { ZoneService } from '../zone.service';
 // Models
 import { Sensor } from '../../sensor/sensor';
+import { ZonesVarietiesSensors } from "../zonesVarietiesSensors";
 
 @Component({
     selector: 'zone-add-sensor',
@@ -13,12 +14,10 @@ import { Sensor } from '../../sensor/sensor';
 
 export class ZoneAddSensorComponent implements OnInit {
 
-    cancelled = new EventEmitter();
-    submitted = new EventEmitter();
-
-    zonesVarietiesSensorsId: number; // TODO: Research an elegant way to pass parameteres from the parent to the child (here)
-
-    private user: any;
+    public cancelled = new EventEmitter();
+    public submitted = new EventEmitter();
+    public zonesVarietiesSensorsId: number;
+    private zonesVarietiesSensors: ZonesVarietiesSensors;
     private sensors: Sensor[];
 
     constructor(
@@ -27,12 +26,10 @@ export class ZoneAddSensorComponent implements OnInit {
         private webStorageService: WebStorageService,
     ) {}
 
-    /**
-     *
-     */
     ngOnInit(): void {
-        this.user = this.webStorageService.getItem('user');
-        this.getSensorsByUser(this.user.id);
+        this.getSensorsByUser(this.webStorageService.getItem('user').id);
+        this.zonesVarietiesSensors = new ZonesVarietiesSensors();
+        this.zonesVarietiesSensors.id = this.zonesVarietiesSensorsId;
     }
 
     /**
@@ -51,19 +48,20 @@ export class ZoneAddSensorComponent implements OnInit {
     }
 
     /**
-     * Adds a sensor to a certain zone
-     * // TODO: validate the modal before submit
+     * Adds a sensor to a variety
      *
      * @param form
      */
-    addSensor(form) {
+    onSubmit(form) {
 
-        this.zoneService
-            .addSensor(this.zonesVarietiesSensorsId, form.value)
-            .subscribe(
-                result => this.submitted.emit(),
-                error => console.error(error) // TODO: error management
-            );
+        if(form.valid) {
+            this.zoneService
+                .addSensor(this.zonesVarietiesSensors)
+                .subscribe(
+                    result => this.submitted.emit(),
+                    error => console.error(error) // TODO: error management
+                );
+        }
     }
 
     /**
