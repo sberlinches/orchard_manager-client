@@ -39,12 +39,24 @@ export class ZoneService {
      * Adds a new zone to the user
      *
      * @param {Zone} zone
-     * @returns {Observable}
+     * @returns {Observable<Object>}
      */
     newZone(zone: Zone): Observable<object> {
 
         return this.http
             .post('http://localhost:8080/api/zone/', zone); // TODO: API url file
+    }
+
+    /**
+     * Deletes a zone and its associated details (Performed in DB side)
+     *
+     * @param {number} zoneId
+     * @returns {Observable<Object>}
+     */
+    deleteZone(zoneId: number): Observable<object> {
+
+        return this.http
+            .delete(`http://localhost:8080/api/zone/${zoneId}`); // TODO: API url file
     }
 
     /**
@@ -73,7 +85,7 @@ export class ZoneService {
      * Removes the sensor from a variety
      *
      * @param {number} zonesVarietiesSensorsId
-     * @returns {Observable}
+     * @returns {Observable<Object>}
      */
     removeSensor(zonesVarietiesSensorsId: number): Observable<object> {
         return this.http

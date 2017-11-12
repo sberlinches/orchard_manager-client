@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
-     * Adds a new zone to the user
+     * Creates a new zone
      */
     newZone(): void {
 
@@ -116,6 +116,24 @@ export class DashboardComponent implements OnInit {
             dialogComponentRef.destroy();
             this.getZonesByUser(this.user.id); // TODO: retrieve all the data again is not the solution!!
         })
+    }
+
+    /**
+     * Deletes a zone and its associated details (Performed in DB side)
+     *
+     * @param {number} zoneId
+     */
+    deleteZone(zoneId: number): void {
+
+        this.zoneService
+            .deleteZone(zoneId)
+            .subscribe(
+                response => {
+                    console.log(response); // TODO: manage the response
+                    this.getZonesByUser(this.user.id); // TODO: retrieve all the data again is not the solution!!
+                },
+                error => console.error(error) // TODO: error management
+            );
     }
 
     /**
@@ -143,7 +161,7 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
-     * Removes the sensor from a zone
+     * Removes the sensor from the zone
      *
      * @param {number} zonesVarietiesSensorsId
      */

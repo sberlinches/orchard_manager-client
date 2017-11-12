@@ -33,7 +33,7 @@
 
         <div class="pull-right">
             <button *ngIf="canEdit()" disabled>Rename orchard</button>
-            <button *ngIf="canDelete()" disabled>Delete orchard</button>
+            <button *ngIf="canDelete()" (click)="deleteZone(zone.id)">Delete orchard</button>
             <button *ngIf="canCreate()" disabled>Add plant</button>
             <button *ngIf="canCreate()" disabled>Add collaborator</button>
         </div>
