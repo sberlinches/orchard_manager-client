@@ -2,7 +2,7 @@
 
 <nav id="body-nav">
     <h2>My orchards</h2>
-    <button (click)="newZone()">New orchard</button>
+    <button (click)="createZone()">New orchard</button>
     <ul>
         <li *ngFor="let zone of zones | filter:{roleId: 1}">
             <a (click)="getZone(zone.id); setActiveRole(zone.roleId)">{{ zone.alias }}</a>
@@ -28,9 +28,8 @@
 <main id="body-main" *ngIf="zone">
     <header class="main-header">
         <div class="pull-left">
-            <h2>{{ zone.alias }}</h2>
+            <h3>{{ zone.alias }}</h3>
         </div>
-
         <div class="pull-right">
             <button *ngIf="canEdit()" disabled>Rename orchard</button>
             <button *ngIf="canDelete()" (click)="deleteZone(zone.id)">Delete orchard</button>
@@ -45,7 +44,6 @@
             <div class="pull-left">
                 <h3><a (click)="getLastLog(varietySensor.id)">{{ varietySensor.variety.name }}</a></h3>
             </div>
-
             <div class="pull-right">
                 <button *ngIf="canDelete()" (click)="removeVariety(varietySensor.id, zone.id)">Delete plant</button>
                 <button *ngIf="canEdit()" disabled>Move plant</button>

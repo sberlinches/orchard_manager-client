@@ -1,7 +1,7 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, ViewChild } from '@angular/core';
 // Services
-import { WebStorageService } from "../../shared/services/web-storage.service";
 import { PlantLogService } from "../../plant-log/plant-log.service";
+import { WebStorageService } from "../../shared/services/web-storage.service";
 import { ZoneService } from "../../zone/zone.service";
 // Models
 import { Zone } from "../../zone/zone";
@@ -24,9 +24,9 @@ import { ZoneAddVarietyComponent } from "../../zone/components/zone-add-variety.
 
 export class DashboardComponent implements OnInit {
 
+    // modal is the div id where the component is going to be injected
     @ViewChild('modal', {read: ViewContainerRef}) modal: ViewContainerRef;
 
-    private user;
     private zones: Zone[];
     private zone: any;
     private plantLog: object;
@@ -39,8 +39,7 @@ export class DashboardComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.user = this.webStorageService.getItem('user');
-        this.getZonesByUser(this.user.id);
+        this.getZonesByUser(this.webStorageService.getItem('user').id);
     }
 
     // TODO: create a service por this permissions thing!!!!
@@ -108,7 +107,7 @@ export class DashboardComponent implements OnInit {
     /**
      * Creates a new zone
      */
-    newZone(): void {
+    private createZone(): void {
 
         this.modal.clear();
 
@@ -121,7 +120,7 @@ export class DashboardComponent implements OnInit {
 
         dialogComponentRef.instance.submitted.subscribe(() => {
             dialogComponentRef.destroy();
-            this.getZonesByUser(this.user.id); // TODO: retrieve all the data again is not the solution!!
+            this.getZonesByUser(this.webStorageService.getItem('user').id); // TODO: retrieve all the data again is not the solution!!
         })
     }
 
@@ -130,14 +129,14 @@ export class DashboardComponent implements OnInit {
      *
      * @param {number} zoneId
      */
-    deleteZone(zoneId: number): void {
+    private deleteZone(zoneId: number): void {
 
         this.zoneService
             .deleteZone(zoneId)
             .subscribe(
                 response => {
                     console.log(response); // TODO: manage the response
-                    this.getZonesByUser(this.user.id); // TODO: retrieve all the data again is not the solution!!
+                    this.getZonesByUser(this.webStorageService.getItem('user').id); // TODO: retrieve all the data again is not the solution!!
                 },
                 error => console.error(error) // TODO: error management
             );
@@ -148,7 +147,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param {number} zoneId
      */
-    addVariety(zoneId: number): void {
+    private addVariety(zoneId: number): void {
 
         this.modal.clear();
 
@@ -173,7 +172,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} zonesVarietiesSensorsId
      * @param {number} zoneId
      */
-    removeVariety(zonesVarietiesSensorsId: number, zoneId: number): void {
+    private removeVariety(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.zoneService
             .removeVariety(zonesVarietiesSensorsId)
@@ -192,7 +191,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} zonesVarietiesSensorsId
      * @param {number} zoneId
      */
-    addSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
+    private addSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.modal.clear();
 
@@ -218,7 +217,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} sensorId
      * @param {number} zoneId
      */
-    changeSensor(zonesVarietiesSensorsId: number, sensorId: number, zoneId: number): void {
+    private changeSensor(zonesVarietiesSensorsId: number, sensorId: number, zoneId: number): void {
 
         this.modal.clear();
 
@@ -244,7 +243,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} zonesVarietiesSensorsId
      * @param {number} zoneId
      */
-    removeSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
+    private removeSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.zoneService
             .removeSensor(zonesVarietiesSensorsId)
