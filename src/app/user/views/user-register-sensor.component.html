@@ -1,24 +1,23 @@
 <article class="modal">
     <div class="modal-container">
         <header class="modal-header">
-            <h2>Add sensor</h2>
+            <h2>Register sensor</h2>
         </header>
         <hr />
 
-        <form class="modal-main" #zoneAddSensorForm="ngForm" (ngSubmit)="onSubmit(zoneAddSensorForm)">
+        <form class="modal-main" #userRegisterSensorForm="ngForm" (ngSubmit)="onSubmit(userRegisterSensorForm)">
             <div>
                 <label for="sensor">Sensor</label>
                 <select id="sensor"
                         name="sensorId"
-                        [(ngModel)]="zonesVarietiesSensors.sensorId"
+                        [(ngModel)]="sensor.id"
                         required>
                     <option *ngFor="let sensor of sensors" [ngValue]="sensor.id">{{ sensor.serial }}</option>
                 </select>
-                <a routerLink="/settings/sensors">Register sensor</a>
             </div>
             <div>
                 <button type="submit"
-                        [disabled]="!zoneAddSensorForm.valid">Submit</button>
+                        [disabled]="!userRegisterSensorForm.valid">Submit</button>
                 <button type="button"
                         (click)="cancel()">Cancel</button>
             </div>

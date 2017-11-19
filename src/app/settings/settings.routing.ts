@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './components/settings.component';
 import { UserEditComponent } from '../user/components/user-edit.component';
 import { UserEditPasswordComponent } from '../user/components/user-edit-password.component';
-import { SensorListComponent } from '../sensor/components/sensor-list.component';
+import { UserListSensorComponent } from '../user/components/user-list-sensor.component';
 // Services
 import { IsAuthenticated } from "../shared/guards/is-authenticated";
 
@@ -29,7 +29,7 @@ const settingsRoutes: Routes = [
             },
             {
                 path: 'sensors',
-                component: SensorListComponent
+                component: UserListSensorComponent
             }
         ]
     }

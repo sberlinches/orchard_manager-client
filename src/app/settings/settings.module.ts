@@ -7,7 +7,7 @@ import { settingsRouting } from './settings.routing';
 import { SettingsComponent } from './components/settings.component';
 import { UserEditComponent } from '../user/components/user-edit.component';
 import { UserEditPasswordComponent } from '../user/components/user-edit-password.component';
-import { SensorListComponent } from '../sensor/components/sensor-list.component';
+import { UserListSensorComponent } from '../user/components/user-list-sensor.component';
 
 @NgModule({
     imports: [
@@ -19,7 +19,7 @@ import { SensorListComponent } from '../sensor/components/sensor-list.component'
         SettingsComponent,
         UserEditComponent,
         UserEditPasswordComponent,
-        SensorListComponent
+        UserListSensorComponent
     ],
     providers: []
 })
