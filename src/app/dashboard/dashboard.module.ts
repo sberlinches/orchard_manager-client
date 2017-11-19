@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard.component';
 import { ZoneNewComponent } from '../zone/components/zone-new.component';
 import { ZoneAddSensorComponent } from '../zone/components/zone-add-sensor.component';
 import { ZoneAddVarietyComponent } from "../zone/components/zone-add-variety.component";
+import { ZoneChangeSensorComponent } from "../zone/components/zone-change-sensor.component";
 import { ObjectFilterPipe } from "../shared/pipes/objectFilter.pipe";
 // Providers
 import { PlantService } from "../plant/plant.service";
@@ -26,6 +27,7 @@ import { ZoneService } from "../zone/zone.service";
         DashboardComponent,
         ZoneNewComponent,
         ZoneAddSensorComponent,
+        ZoneChangeSensorComponent,
         ZoneAddVarietyComponent,
         ObjectFilterPipe
     ],

@@ -95,12 +95,12 @@ export class ZoneService {
     }
 
     /**
-     * Modifies the sensor of a variety
+     * Changes the sensor of a variety
      *
      * @param {ZonesVarietiesSensors} zonesVarietiesSensors
      * @returns {Observable<Object>}
      */
-    modifySensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
+    changeSensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
             .patch(`http://localhost:8080/api/zone/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
     }

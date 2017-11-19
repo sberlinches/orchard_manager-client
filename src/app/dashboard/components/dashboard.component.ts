@@ -8,6 +8,7 @@ import { Zone } from "../../zone/zone";
 // Components
 import { ZoneNewComponent } from '../../zone/components/zone-new.component';
 import { ZoneAddSensorComponent } from '../../zone/components/zone-add-sensor.component';
+import { ZoneChangeSensorComponent } from "../../zone/components/zone-change-sensor.component";
 import { ZoneAddVarietyComponent } from "../../zone/components/zone-add-variety.component";
 
 @Component({
@@ -15,6 +16,7 @@ import { ZoneAddVarietyComponent } from "../../zone/components/zone-add-variety.
     entryComponents: [
         ZoneNewComponent,
         ZoneAddSensorComponent,
+        ZoneChangeSensorComponent,
         ZoneAddVarietyComponent
     ],
     templateUrl: '../views/dashboard.component.html'
@@ -166,9 +168,10 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
-     * Removes the sensor from the zone
+     * Removes the variety from the zone
      *
      * @param {number} zonesVarietiesSensorsId
+     * @param {number} zoneId
      */
     removeVariety(zonesVarietiesSensorsId: number, zoneId: number): void {
 
@@ -184,9 +187,10 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
-     * Adds a sensor to a zone
+     * Adds a sensor to a variety
      *
      * @param {number} zonesVarietiesSensorsId
+     * @param {number} zoneId
      */
     addSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
@@ -208,9 +212,37 @@ export class DashboardComponent implements OnInit {
     }
 
     /**
-     * Removes the sensor from the zone
+     * Changes the sensor of a variety
      *
      * @param {number} zonesVarietiesSensorsId
+     * @param {number} sensorId
+     * @param {number} zoneId
+     */
+    changeSensor(zonesVarietiesSensorsId: number, sensorId: number, zoneId: number): void {
+
+        this.modal.clear();
+
+        let dialogComponentFactory  = this.componentFactoryResolver.resolveComponentFactory(ZoneChangeSensorComponent);
+        let dialogComponentRef      = this.modal.createComponent(dialogComponentFactory);
+
+        dialogComponentRef.instance.zonesVarietiesSensorsId = zonesVarietiesSensorsId;
+        dialogComponentRef.instance.sensorId                = sensorId;
+
+        dialogComponentRef.instance.cancelled.subscribe(() => {
+            dialogComponentRef.destroy();
+        });
+
+        dialogComponentRef.instance.submitted.subscribe(() => {
+            dialogComponentRef.destroy();
+            this.getZone(zoneId); // TODO: retrieve all the data again is not the solution!!
+        })
+    }
+
+    /**
+     * Removes the sensor from the variety
+     *
+     * @param {number} zonesVarietiesSensorsId
+     * @param {number} zoneId
      */
     removeSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 

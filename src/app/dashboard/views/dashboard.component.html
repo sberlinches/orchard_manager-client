@@ -48,9 +48,9 @@
 
             <div class="pull-right">
                 <button *ngIf="canDelete()" (click)="removeVariety(varietySensor.id, zone.id)">Delete plant</button>
-                <button *ngIf="canEdit()" disabled>Change variety</button>
+                <button *ngIf="canEdit()" disabled>Move plant</button>
                 <button *ngIf="canDelete() && varietySensor.sensor.id" (click)="removeSensor(varietySensor.id, zone.id)">Remove sensor</button>
-                <button *ngIf="canEdit() && varietySensor.sensor.id" (click)="addSensor(varietySensor.id, zone.id)" disabled>Change sensor</button>
+                <button *ngIf="canEdit() && varietySensor.sensor.id" (click)="changeSensor(varietySensor.id, varietySensor.sensor.id, zone.id)">Change sensor</button>
                 <button *ngIf="canCreate() && !varietySensor.sensor.id" (click)="addSensor(varietySensor.id, zone.id)">Add sensor</button>
             </div>
         </header>
