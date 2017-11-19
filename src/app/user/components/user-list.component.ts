@@ -5,8 +5,7 @@ import { UserService } from '../user.service';
 
 @Component({
     selector: 'user-list',
-    templateUrl: '../views/user-list.component.html',
-    providers: []
+    templateUrl: '../views/user-list.component.html'
 })
 
 export class UserListComponent implements OnInit {
