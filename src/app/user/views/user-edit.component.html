@@ -1,10 +1,91 @@
-<header class="main-header">
-    <h2>User edit</h2>
-</header>
-<hr />
-
 <article class="article">
-    <main class="article-main">
-        form
-    </main>
+    <header class="article-header">
+        <h2>Edit user</h2>
+    </header>
+    <hr />
+
+    <form class="article-main" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
+        <div>
+            <label for="username">Username</label>
+            <input type="text"
+                   id="username"
+                   name="username"
+                   [(ngModel)]="user.username"
+                   minlength="2"
+                   maxlength="30"
+                   required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email"
+                   id="email"
+                   name="email"
+                   [(ngModel)]="user.email"
+                   minlength="3"
+                   maxlength="254"
+                   required>
+        </div>
+        <div>
+            <label for="firstName">First name</label>
+            <input type="text"
+                   id="firstName"
+                   name="firstName"
+                   [(ngModel)]="user.firstName"
+                   minlength="2"
+                   maxlength="30">
+        </div>
+        <div>
+            <label for="lastName">Last name</label>
+            <input type="text"
+                   id="lastName"
+                   name="lastName"
+                   [(ngModel)]="user.lastName"
+                   minlength="2"
+                   maxlength="30">
+        </div>
+        <!--<div>
+            <label for="country">Country</label>
+            <select id="country"
+                    name="countryId"
+                    [(ngModel)]="user.countryId"
+                    (focus)="onCountrySelect()">
+                <option value=""></option>
+                <option *ngFor="let country of countries" [ngValue]="country.id">{{ country.name }}</option>
+            </select>
+        </div>
+        <div>
+            <label for="state">State</label>
+            <select id="state"
+                    name="stateId"
+                    [(ngModel)]="user.stateId"
+                    (focus)="onStateSelect(user.countryId)"
+                    [disabled]="!user.countryId">
+                <option value=""></option>
+                <option *ngFor="let state of states" [ngValue]="state.id">{{ state.name }}</option>
+            </select>
+        </div>
+        <div>
+            <label for="city">City</label>
+            <select id="city"
+                    name="cityId"
+                    [(ngModel)]="user.cityId"
+                    (focus)="onCitySelect(user.stateId)"
+                    [disabled]="!user.stateId">
+                <option value=""></option>
+                <option *ngFor="let city of cities" [ngValue]="city.id">{{ city.name }}</option>
+            </select>
+        </div>-->
+        <div>
+            <label for="birthAt">Birth at</label>
+            <input type="date"
+                   id="birthAt"
+                   name="birthAt"
+                   [(ngModel)]="user.birthAt"
+                   max="{{ todayDate | date: 'y-MM-dd' }}">
+        </div>
+        <div>
+            <button type="submit"
+                    [disabled]="!userEditForm.valid">Submit</button>
+        </div>
+    </form>
 </article>
