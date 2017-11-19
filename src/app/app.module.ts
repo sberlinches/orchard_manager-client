@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 // Imports
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRoutingProviders } from './app.routing';
 import { AuthModule } from './auth/auth.module'
@@ -15,6 +16,7 @@ import { WebStorageService } from './shared/services/web-storage.service';
 @NgModule({
     // Other modules whose exported classes are needed by component templates declared in this module.
     imports: [
+        HttpClientModule,
         BrowserModule,
         routing,
         AuthModule,
