@@ -1,0 +1,26 @@
+<article class="modal">
+    <div class="modal-container">
+        <header class="modal-header">
+            <h2>Add collaborator</h2>
+        </header>
+        <hr />
+
+        <form class="modal-main" #zoneAddCollaboratorForm="ngForm" (ngSubmit)="onSubmit(zoneAddCollaboratorForm)">
+            <div>
+                <label for="user">User</label>
+                <select id="user"
+                        name="userId"
+                        [(ngModel)]="zoneUser.userId"
+                        required>
+                    <option *ngFor="let user of users" [ngValue]="user.id">{{ user.username }}</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit"
+                        [disabled]="!zoneAddCollaboratorForm.valid">Submit</button>
+                <button type="button"
+                        (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</article>

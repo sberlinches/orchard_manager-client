@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // Models
 import { Zone } from './zone';
+import { ZonesUsers } from './zonesUsers';
 import { ZonesVarietiesSensors } from './zonesVarietiesSensors';
 
 @Injectable()
@@ -58,6 +59,17 @@ export class ZoneService {
 
         return this.http
             .delete(`http://localhost:8080/api/zone/${zoneId}`); // TODO: API url file
+    }
+
+    /**
+     * Adds a user (collaborator) to a zone
+     *
+     * @param {ZonesUsers} zoneUser
+     * @returns {Observable<Object>}
+     */
+    addCollaborator(zoneUser: ZonesUsers): Observable<object> {
+        return this.http
+            .post(`http://localhost:8080/api/zone/${zoneUser.zoneId}/collaborator`, zoneUser); // TODO: API url file
     }
 
     /**

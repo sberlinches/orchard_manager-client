@@ -6,18 +6,20 @@ import { ZoneService } from "../../zone/zone.service";
 // Models
 import { Zone } from "../../zone/zone";
 // Components
-import { ZoneNewComponent } from '../../zone/components/zone-new.component';
+import { ZoneAddCollaboratorComponent } from "../../zone/components/zone-add-collaborator.component";
 import { ZoneAddSensorComponent } from '../../zone/components/zone-add-sensor.component';
-import { ZoneChangeSensorComponent } from "../../zone/components/zone-change-sensor.component";
 import { ZoneAddVarietyComponent } from "../../zone/components/zone-add-variety.component";
+import { ZoneChangeSensorComponent } from "../../zone/components/zone-change-sensor.component";
+import { ZoneNewComponent } from '../../zone/components/zone-new.component';
 
 @Component({
     selector: 'dashboard',
     entryComponents: [
-        ZoneNewComponent,
+        ZoneAddCollaboratorComponent,
         ZoneAddSensorComponent,
+        ZoneAddVarietyComponent,
         ZoneChangeSensorComponent,
-        ZoneAddVarietyComponent
+        ZoneNewComponent
     ],
     templateUrl: '../views/dashboard.component.html'
 })
@@ -254,5 +256,29 @@ export class DashboardComponent implements OnInit {
                 },
                 error => console.error(error) // TODO: error management
             );
+    }
+
+    /**
+     * Adds a user (collaborator) to a zone
+     *
+     * @param {number} zoneId
+     */
+    private addCollaborator(zoneId: number): void {
+
+        this.modal.clear();
+
+        let dialogComponentFactory  = this.componentFactoryResolver.resolveComponentFactory(ZoneAddCollaboratorComponent);
+        let dialogComponentRef      = this.modal.createComponent(dialogComponentFactory);
+
+        dialogComponentRef.instance.zoneId = zoneId;
+
+        dialogComponentRef.instance.cancelled.subscribe(() => {
+            dialogComponentRef.destroy();
+        });
+
+        dialogComponentRef.instance.submitted.subscribe(() => {
+            dialogComponentRef.destroy();
+            this.getZone(zoneId); // TODO: retrieve all the data again is not the solution!!
+        })
     }
 }
