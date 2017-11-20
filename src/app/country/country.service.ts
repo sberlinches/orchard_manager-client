@@ -16,7 +16,7 @@ export class CountryService {
      */
     getCountries(): Observable<object> {
         return this.http
-            .get('https://localhost:3443/api/countries/'); // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/countries/'); // TODO: API url file
     }
 
     /**
@@ -27,6 +27,6 @@ export class CountryService {
      */
     getCountry(id: number): Observable<object> {
         return this.http
-            .get('https://localhost:3443/api/countries/' + id); // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/countries/' + id); // TODO: API url file
     }
 }

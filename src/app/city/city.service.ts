@@ -16,7 +16,7 @@ export class CityService {
      */
     getCities(): Observable<object> {
         return this.http
-            .get('https://localhost:3443/api/cities/'); // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/cities/'); // TODO: API url file
     }
 
     /**
@@ -27,7 +27,7 @@ export class CityService {
      */
     getCity(id: number): Observable<object> {
         return this.http
-            .get('https://localhost:3443/api/cities/' + id); // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/cities/' + id); // TODO: API url file
     }
 
     /**
@@ -38,6 +38,6 @@ export class CityService {
      */
     getCitiesByState(stateId: number): Observable<object> {
         return this.http
-            .get('https://localhost:3443/api/cities/state' + stateId); // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/cities/state' + stateId); // TODO: API url file
     }
 }
