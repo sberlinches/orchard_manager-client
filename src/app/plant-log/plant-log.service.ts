@@ -17,6 +17,6 @@ export class PlantLogService {
      */
     getLastLog(plantLogId): Observable<object> {
         return this.http
-            .get('http://localhost:8080/api/plant_logs/' + plantLogId); // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/plant_logs/' + plantLogId); // TODO: API url file
     }
 }

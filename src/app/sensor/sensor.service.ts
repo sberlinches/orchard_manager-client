@@ -19,7 +19,7 @@ export class SensorService {
      */
     getSensorsByUser(userId: number): Observable<object> {
         return this.http
-            .get(`http://localhost:8080/api/sensors/user/${userId}`) // TODO: API url file
+            .get(`https://gardening-assistant-api.appspot.com/api/sensors/user/${userId}`) // TODO: API url file
     }
 
     /**
@@ -30,7 +30,7 @@ export class SensorService {
      */
     registerSensor(sensor: Sensor): Observable<object> {
         return this.http
-            .patch(`http://localhost:8080/api/sensors/${sensor.id}/register`, sensor) // TODO: API url file
+            .patch(`https://gardening-assistant-api.appspot.com/api/sensors/${sensor.id}/register`, sensor) // TODO: API url file
     }
 
     /**
@@ -41,6 +41,6 @@ export class SensorService {
      */
     deregisterSensor(sensorId: number): Observable<object> {
         return this.http
-            .delete(`http://localhost:8080/api/sensors/${sensorId}/register`) // TODO: API url file
+            .delete(`https://gardening-assistant-api.appspot.com/api/sensors/${sensorId}/register`) // TODO: API url file
     }
 }

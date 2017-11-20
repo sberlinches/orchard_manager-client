@@ -18,6 +18,6 @@ export class VarietyService {
     getVarietiesByPlant(plantId: number): Observable<object> {
 
         return this.http
-            .get(`http://localhost:8080/api/varieties/plant/${plantId}`) // TODO: API url file
+            .get(`https://gardening-assistant-api.appspot.com/api/varieties/plant/${plantId}`) // TODO: API url file
     }
 }

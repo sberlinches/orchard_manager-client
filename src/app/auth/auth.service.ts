@@ -27,7 +27,7 @@ export class AuthService {
 
         return this.http
             .post(
-                'http://localhost:8080/api/auth/login', // TODO: API url file
+                'https://gardening-assistant-api.appspot.com/api/auth/login', // TODO: API url file
                 { username: username, password: password }
             );
     }
@@ -42,7 +42,7 @@ export class AuthService {
 
         return this.http
             .post(
-                'http://localhost:8080/auth/signup/', // TODO: API url file
+                'https://gardening-assistant-api.appspot.com/auth/signup/', // TODO: API url file
                 user
             );
     }

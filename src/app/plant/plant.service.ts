@@ -17,6 +17,6 @@ export class PlantService {
     getPlants(): Observable<object> {
 
         return this.http
-            .get('http://localhost:8080/api/plants') // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/plants') // TODO: API url file
     }
 }

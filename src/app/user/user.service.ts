@@ -18,7 +18,7 @@ export class UserService {
      */
     getUsers(): Observable<object> {
         return this.http
-            .get('http://localhost:8080/api/users/'); // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/users/'); // TODO: API url file
     }
 
     /**
@@ -29,7 +29,7 @@ export class UserService {
      */
     getUser(userId: number): Observable<object> {
         return this.http
-            .get(`http://localhost:8080/api/user/${userId}`); // TODO: API url file
+            .get(`https://gardening-assistant-api.appspot.com/api/user/${userId}`); // TODO: API url file
     }
 
     /**
@@ -41,7 +41,7 @@ export class UserService {
     createUser(user: User): Observable<object> {
 
         return this.http
-            .post('http://localhost:8080/api/user/', user); // TODO: API url file
+            .post('https://gardening-assistant-api.appspot.com/api/user/', user); // TODO: API url file
     }
 
     /**
@@ -53,6 +53,6 @@ export class UserService {
     updateUser(user: User): Observable<object> {
 
         return this.http
-            .patch(`http://localhost:8080/api/user/${user.id}`, user); // TODO: API url file
+            .patch(`https://gardening-assistant-api.appspot.com/api/user/${user.id}`, user); // TODO: API url file
     }
 }

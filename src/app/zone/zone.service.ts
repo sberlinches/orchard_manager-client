@@ -22,7 +22,7 @@ export class ZoneService {
     getZone(zoneId: number): Observable<object> {
 
         return this.http
-            .get('http://localhost:8080/api/zone/' + zoneId) // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/zone/' + zoneId) // TODO: API url file
     }
 
     /**
@@ -34,7 +34,7 @@ export class ZoneService {
     getZonesByUser(userId: number): Observable<object> {
 
         return this.http
-            .get('http://localhost:8080/api/zones/user/' + userId) // TODO: API url file
+            .get('https://gardening-assistant-api.appspot.com/api/zones/user/' + userId) // TODO: API url file
     }
 
     /**
@@ -46,7 +46,7 @@ export class ZoneService {
     newZone(zone: Zone): Observable<object> {
 
         return this.http
-            .post('http://localhost:8080/api/zone/', zone); // TODO: API url file
+            .post('https://gardening-assistant-api.appspot.com/api/zone/', zone); // TODO: API url file
     }
 
     /**
@@ -58,7 +58,7 @@ export class ZoneService {
     deleteZone(zoneId: number): Observable<object> {
 
         return this.http
-            .delete(`http://localhost:8080/api/zone/${zoneId}`); // TODO: API url file
+            .delete(`https://gardening-assistant-api.appspot.com/api/zone/${zoneId}`); // TODO: API url file
     }
 
     /**
@@ -69,7 +69,7 @@ export class ZoneService {
      */
     addCollaborator(zoneUser: ZonesUsers): Observable<object> {
         return this.http
-            .post(`http://localhost:8080/api/zone/${zoneUser.zoneId}/collaborator`, zoneUser); // TODO: API url file
+            .post(`https://gardening-assistant-api.appspot.com/api/zone/${zoneUser.zoneId}/collaborator`, zoneUser); // TODO: API url file
     }
 
     /**
@@ -80,7 +80,7 @@ export class ZoneService {
      */
     addVariety(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
-            .post(`http://localhost:8080/api/zone/${zonesVarietiesSensors.zoneId}/variety`, zonesVarietiesSensors); // TODO: API url file
+            .post(`https://gardening-assistant-api.appspot.com/api/zone/${zonesVarietiesSensors.zoneId}/variety`, zonesVarietiesSensors); // TODO: API url file
     }
 
     /**
@@ -92,7 +92,7 @@ export class ZoneService {
     removeVariety(zonesVarietiesSensorsId: number): Observable<object> {
 
         return this.http
-            .delete(`http://localhost:8080/api/zones/variety/${zonesVarietiesSensorsId}`) // TODO: API url file
+            .delete(`https://gardening-assistant-api.appspot.com/api/zones/variety/${zonesVarietiesSensorsId}`) // TODO: API url file
     }
 
     /**
@@ -103,7 +103,7 @@ export class ZoneService {
      */
     addSensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
-            .post(`http://localhost:8080/api/zone/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
+            .post(`https://gardening-assistant-api.appspot.com/api/zone/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
     }
 
     /**
@@ -114,7 +114,7 @@ export class ZoneService {
      */
     changeSensor(zonesVarietiesSensors: ZonesVarietiesSensors): Observable<object> {
         return this.http
-            .patch(`http://localhost:8080/api/zone/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
+            .patch(`https://gardening-assistant-api.appspot.com/api/zone/variety/sensor/${zonesVarietiesSensors.id}`, zonesVarietiesSensors); // TODO: API url file
     }
 
     /**
@@ -125,6 +125,6 @@ export class ZoneService {
      */
     removeSensor(zonesVarietiesSensorsId: number): Observable<object> {
         return this.http
-            .delete(`http://localhost:8080/api/zone/variety/sensor/${zonesVarietiesSensorsId}`); // TODO: API url file
+            .delete(`https://gardening-assistant-api.appspot.com/api/zone/variety/sensor/${zonesVarietiesSensorsId}`); // TODO: API url file
     }
 }
