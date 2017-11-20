@@ -29,6 +29,9 @@
     <header class="main-header">
         <div class="pull-left">
             <h3>{{ zone.alias }}</h3>
+            <strong>Owner:</strong> <span *ngFor="let user of zone.users | filter:{roleId: 1}">{{ user.username }}, </span><br />
+            <strong>Collaborators:</strong> <span *ngFor="let user of zone.users | filter:{roleId: 2}">{{ user.username }}, </span><br />
+            <strong>Followers:</strong> <span *ngFor="let user of zone.users | filter:{roleId: 3}">{{ user.username }}, </span>
         </div>
         <div class="pull-right">
             <button *ngIf="canEdit()" disabled>Rename orchard</button>

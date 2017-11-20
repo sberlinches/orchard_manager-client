@@ -62,7 +62,7 @@ form div {
     padding: 20px;
 }
 
-#body-header h1, p {
+#body-header h1, #body-header p {
     margin: 0;
     display: inline-block;
 }
