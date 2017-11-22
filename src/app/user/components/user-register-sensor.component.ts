@@ -12,11 +12,11 @@ import { Sensor } from '../../sensor/sensor';
 
 export class UserRegisterSensorComponent implements OnInit {
 
-    public cancelled = new EventEmitter();
-    public submitted = new EventEmitter();
+    cancelled = new EventEmitter();
+    submitted = new EventEmitter();
 
-    private sensors: Sensor[];
-    private sensor: Sensor;
+    sensors: Sensor[];
+    sensor: Sensor;
 
     constructor(
         private sensorService: SensorService,
@@ -38,7 +38,7 @@ export class UserRegisterSensorComponent implements OnInit {
      * Get the sensors that have not been registered already
      * TODO: temporal approach to add sensors
      */
-    private getUnregisteredSensors(): void {
+    getUnregisteredSensors(): void {
 
         this.sensorService
             .getSensorsByUser(0)

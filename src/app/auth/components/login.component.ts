@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // Services
 import { AuthService } from '../auth.service';
 import { WebStorageService } from '../../shared/services/web-storage.service';
+// Models
+import { User } from "../../user/user";
 
 @Component({
     selector: 'login',
     templateUrl: '../views/login.component.html'
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
+    user: User;
     errorMessage: string;
 
     constructor(
@@ -18,6 +21,10 @@ export class LoginComponent {
         private authService: AuthService,
         private webStorageService: WebStorageService
     ) {}
+
+    ngOnInit(): void {
+        this.user = new User(null, null, null); // TODO: think again about the mandatory parameters
+    }
 
     /**
      * Handles the login form
@@ -28,9 +35,8 @@ export class LoginComponent {
 
         if (loginForm.valid) {
             this.login(
-                loginForm.value.username,
-                loginForm.value.password,
-                loginForm.value.isPersistent
+                this.user,
+                loginForm.value.isPersistent // TODO: is not working
             );
         }
     }
@@ -40,14 +46,13 @@ export class LoginComponent {
      * Sets all the user details in storage (login)
      * And redirects
      *
-     * @param {string} username The user username
-     * @param {string} password The user password
+     * @param {User} user
      * @param {boolean} isPersistent Indicates whether the data is going to persist until is explicitly deleted, or not
      */
-    login(username: string, password: string, isPersistent: boolean): void {
+    login(user: User, isPersistent: boolean): void {
 
         this.authService
-            .getUser(username, password)
+            .getUser(user)
             .subscribe(
                 user => {
                     this.webStorageService.setItem('user', user, isPersistent); // TODO: literals

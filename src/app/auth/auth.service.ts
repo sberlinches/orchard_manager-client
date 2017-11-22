@@ -19,17 +19,13 @@ export class AuthService {
     /**
      * Sends via http the username and password and retrieves the user that matches
      *
-     * @param {string} username
-     * @param {string} password
+     * @param {User} user
      * @returns {Observable<Object>}
      */
-    getUser(username: string, password: string): Observable<object> {
+    getUser(user: User): Observable<object> {
 
         return this.http
-            .post(
-                'https://gardening-assistant-api.appspot.com/api/auth/login', // TODO: API url file
-                { username: username, password: password }
-            );
+            .post('https://gardening-assistant-api.appspot.com/api/auth/login', user); // TODO: API url file
     }
 
     /**
