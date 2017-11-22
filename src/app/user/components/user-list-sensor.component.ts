@@ -20,7 +20,7 @@ export class UserListSensorComponent implements OnInit {
     // modal is the div id where the component is going to be injected
     @ViewChild('modal', {read: ViewContainerRef}) modal: ViewContainerRef;
 
-    private sensors: Sensor[];
+    sensors: Sensor[];
 
     constructor(
         private sensorService: SensorService,
@@ -35,7 +35,7 @@ export class UserListSensorComponent implements OnInit {
     /**
      * Gets all sensors owned by the user given
      */
-    private getSensorsByUser(userId: number): void {
+    getSensorsByUser(userId: number): void {
 
         this.sensorService
             .getSensorsByUser(userId)
@@ -48,7 +48,7 @@ export class UserListSensorComponent implements OnInit {
     /**
      * Registers the sensor to an user
      */
-    private registerSensor(): void {
+    registerSensor(): void {
 
         this.modal.clear();
 
@@ -70,7 +70,7 @@ export class UserListSensorComponent implements OnInit {
      *
      * @param sensorId
      */
-    private deregisterSensor(sensorId: number): void {
+    deregisterSensor(sensorId: number): void {
 
         /**
          * Given an array of objects, removes the the entire object that the property matches with the value.

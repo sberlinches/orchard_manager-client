@@ -12,8 +12,8 @@ import { User } from '../user';
 
 export class UserEditComponent implements OnInit{
 
-    private user: User;
-    private todayDate: Date;
+    user: User;
+    todayDate: Date;
 
     constructor(
         private userService: UserService,

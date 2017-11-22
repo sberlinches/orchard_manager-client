@@ -11,9 +11,9 @@ import { Zone } from '../zone';
 
 export class ZoneNewComponent implements OnInit {
 
-    public cancelled = new EventEmitter();
-    public submitted = new EventEmitter();
-    private zone: Zone;
+    cancelled = new EventEmitter();
+    submitted = new EventEmitter();
+    zone: Zone;
 
     constructor(
         private zoneService: ZoneService,

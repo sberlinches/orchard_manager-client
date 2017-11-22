@@ -13,8 +13,8 @@ import { User } from '../../user/user';
 
 export class SignUpComponent implements OnInit {
 
-    private errorMessage: string;
-    private user: User;
+    errorMessage: string;
+    user: User;
 
     constructor(
         private router: Router,

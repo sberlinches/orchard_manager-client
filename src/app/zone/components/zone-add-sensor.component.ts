@@ -14,11 +14,11 @@ import { ZonesVarietiesSensors } from "../zonesVarietiesSensors";
 
 export class ZoneAddSensorComponent implements OnInit {
 
-    public cancelled = new EventEmitter();
-    public submitted = new EventEmitter();
-    public zonesVarietiesSensorsId: number;
-    private zonesVarietiesSensors: ZonesVarietiesSensors;
-    private sensors: Sensor[];
+    cancelled = new EventEmitter();
+    submitted = new EventEmitter();
+    zonesVarietiesSensorsId: number;
+    zonesVarietiesSensors: ZonesVarietiesSensors;
+    sensors: Sensor[];
 
     constructor(
         private sensorService: SensorService,

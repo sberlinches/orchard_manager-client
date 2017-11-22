@@ -11,7 +11,7 @@ import { WebStorageService } from '../../shared/services/web-storage.service';
 
 export class LoginComponent {
 
-    private errorMessage: string;
+    errorMessage: string;
 
     constructor(
         private router: Router,

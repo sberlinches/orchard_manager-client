@@ -13,12 +13,11 @@ import { ZonesUsers } from "../zonesUsers";
 
 export class ZoneAddCollaboratorComponent implements OnInit {
 
-    public cancelled = new EventEmitter();
-    public submitted = new EventEmitter();
-    public zoneId: number;
-
-    private users: User[];
-    private zoneUser: ZonesUsers;
+    cancelled = new EventEmitter();
+    submitted = new EventEmitter();
+    zoneId: number;
+    users: User[];
+    zoneUser: ZonesUsers;
 
     constructor(
         private userService: UserService,

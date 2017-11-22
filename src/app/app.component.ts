@@ -10,9 +10,9 @@ import { WebStorageService } from './shared/services/web-storage.service';
 
 export class AppComponent implements DoCheck {
 
-    private title = 'orchardManager-client';
-    private isLoggedIn: boolean;
-    private user: object;
+    title = 'orchardManager-client';
+    isLoggedIn: boolean;
+    user: object;
 
     constructor(
         private authService: AuthService,

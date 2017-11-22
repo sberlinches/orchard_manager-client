@@ -29,9 +29,9 @@ export class DashboardComponent implements OnInit {
     // modal is the div id where the component is going to be injected
     @ViewChild('modal', {read: ViewContainerRef}) modal: ViewContainerRef;
 
-    private zones: Zone[];
-    private zone: any;
-    private plantLog: object;
+    zones: Zone[];
+    zone: any;
+    plantLog: object;
 
     constructor(
         private plantLogService: PlantLogService,
@@ -45,17 +45,17 @@ export class DashboardComponent implements OnInit {
     }
 
     // TODO: create a service por this permissions thing!!!!
-    private roleId: number;
-    private setActiveRole(value: number): void {
+    roleId: number;
+    setActiveRole(value: number): void {
         this.roleId = value;
     }
-    private canCreate(): boolean {
+    canCreate(): boolean {
         return (this.roleId === 1);
     }
-    private canEdit(): boolean {
+    canEdit(): boolean {
         return (this.roleId === 1 || this.roleId === 2);
     }
-    private canDelete(): boolean {
+    canDelete(): boolean {
         return (this.roleId === 1);
     }
 
@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param zoneId The zone id
      */
-    private getZone(zoneId): void {
+    getZone(zoneId): void {
 
         this.zoneService
             .getZone(zoneId)
@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param userId The user id
      */
-    private getZonesByUser(userId): void {
+    getZonesByUser(userId): void {
 
         this.zoneService
             .getZonesByUser(userId)
@@ -94,7 +94,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param {number} plantLogId
      */
-    private getLastLog(plantLogId: number): void {
+    getLastLog(plantLogId: number): void {
 
         this.plantLog = null;
 
@@ -109,7 +109,7 @@ export class DashboardComponent implements OnInit {
     /**
      * Creates a new zone
      */
-    private createZone(): void {
+    createZone(): void {
 
         this.modal.clear();
 
@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param {number} zoneId
      */
-    private deleteZone(zoneId: number): void {
+    deleteZone(zoneId: number): void {
 
         this.zoneService
             .deleteZone(zoneId)
@@ -149,7 +149,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param {number} zoneId
      */
-    private addVariety(zoneId: number): void {
+    addVariety(zoneId: number): void {
 
         this.modal.clear();
 
@@ -174,7 +174,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} zonesVarietiesSensorsId
      * @param {number} zoneId
      */
-    private removeVariety(zonesVarietiesSensorsId: number, zoneId: number): void {
+    removeVariety(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.zoneService
             .removeVariety(zonesVarietiesSensorsId)
@@ -193,7 +193,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} zonesVarietiesSensorsId
      * @param {number} zoneId
      */
-    private addSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
+    addSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.modal.clear();
 
@@ -219,7 +219,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} sensorId
      * @param {number} zoneId
      */
-    private changeSensor(zonesVarietiesSensorsId: number, sensorId: number, zoneId: number): void {
+    changeSensor(zonesVarietiesSensorsId: number, sensorId: number, zoneId: number): void {
 
         this.modal.clear();
 
@@ -245,7 +245,7 @@ export class DashboardComponent implements OnInit {
      * @param {number} zonesVarietiesSensorsId
      * @param {number} zoneId
      */
-    private removeSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
+    removeSensor(zonesVarietiesSensorsId: number, zoneId: number): void {
 
         this.zoneService
             .removeSensor(zonesVarietiesSensorsId)
@@ -263,7 +263,7 @@ export class DashboardComponent implements OnInit {
      *
      * @param {number} zoneId
      */
-    private addCollaborator(zoneId: number): void {
+    addCollaborator(zoneId: number): void {
 
         this.modal.clear();
 
