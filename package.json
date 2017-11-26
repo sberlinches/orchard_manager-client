@@ -5,7 +5,9 @@
   "scripts": {
     "install": ". ./script.sh",
     "ng": "ng",
-    "start": "ng serve --prod --host 0.0.0.0 --port 8080 --disable-host-check",
+    "start": "lite-server --baseDir='dist'",
+    "start:ng": "ng serve --prod --delete-output-path false --host 0.0.0.0 --port 8080 --disable-host-check",
+    "start:pre": "ng serve --prod --delete-output-path false --host 0.0.0.0 --port 8080 --disable-host-check",
     "start:dev": "ng serve",
     "build": "ng build",
     "test": "ng test"
@@ -22,14 +24,14 @@
     "@angular/router": "^5.0.2",
     "@angular/cli": "1.5.0",
     "@angular/compiler-cli": "^5.0.2",
-
     "@types/node": "^8.0.53",
     "canonical-path": "0.0.2",
     "typescript": "2.4.2",
     "core-js": "^2.5.1",
     "rxjs": "^5.5.2",
     "systemjs": "0.20.19",
-    "zone.js": "^0.8.18"
+    "zone.js": "^0.8.18",
+    "lite-server": "2.3.0"
   },
   "devDependencies": {}
 }

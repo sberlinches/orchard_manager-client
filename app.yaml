@@ -12,5 +12,5 @@ skip_files:
 - ^README\..*
 - \.gitignore
 - ^\.git$
-#- ^src$
+- ^src$
 #- ^package\.json
